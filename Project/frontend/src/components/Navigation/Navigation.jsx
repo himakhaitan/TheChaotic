@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Navigation.module.css";
-
+import Logo from "../UI/Logo/Logo";
+import { BiNavigation } from "react-icons/bi";
 const Navigation = () => {
   return (
     <header className={classes.header}>
@@ -23,12 +24,7 @@ const Navigation = () => {
           </li>
         </ul>
       </nav>
-      <div className={classes.logo}>
-        <a href="www.google.com" className={classes.logoLink}>
-          <span className={classes.logoSpan}>Hima</span>
-          <span className={classes.logoSpan}>Khaitan</span>
-        </a>
-      </div>
+      <Logo className={classes.logo}/>
       <div className={classes.newsletter}>
         <h3 className={classes.newsletterHead}>Subscribe to Newsletter</h3>
         <div className={classes.newsletterform}>
@@ -37,6 +33,9 @@ const Navigation = () => {
             className={classes.newsletterInput}
             placeholder="Enter Email Address"
           />
+          <div className={classes.submitIcon}>
+            <BiNavigation />
+          </div>
         </div>
       </div>
       <div className={classes.copyright}>

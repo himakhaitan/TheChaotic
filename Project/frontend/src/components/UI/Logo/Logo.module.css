@@ -1,0 +1,18 @@
+/* LOGO */
+.logo {
+    background-image: url("https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .logoSpan {
+    font-size: 7rem;
+    font-family: "Abril Fatface", cursive;
+    display: block;
+    line-height: 0.8;
+    color: transparent;
+    /* https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 */
+  }
+  
