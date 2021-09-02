@@ -1,0 +1,105 @@
+.sidebar {
+  padding: 5rem 2rem 3rem;
+  background-color: var(--grey);
+  width: 100%;
+}
+.sidegrp {
+  padding: 0rem 3rem;
+  /* width: 100%; */
+}
+.searchbar {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  grid-column: 1/-1;
+  background-color: var(--grey);
+  grid-row: 1/-1;
+  outline: none;
+  border: 1px solid var(--black);
+}
+.searchIcon {
+  display: flex;
+  grid-column: 2/-1;
+  font-size: 1.6rem;
+  cursor: pointer;
+  grid-row: 1/-1;
+  transition: all 0.2s;
+  align-items: center;
+  justify-content: center;
+}
+.aboutText {
+  font-size: 1.4rem;
+}
+
+.searchIcon:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+.searchbar::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.searchgrp {
+  display: grid;
+  margin: 3rem 0;
+  grid-template-columns: 1fr 20%;
+}
+.sidebar-heading {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 3rem;
+  margin-top: 3.5rem;
+  line-height: 1.5;
+  font-family: "Lora", Arial, sans-serif;
+}
+
+.news-heading {
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-family: "Lora", Arial, sans-serif;
+}
+
+.newsletterGrp {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("https://images.pexels.com/photos/291732/pexels-photo-291732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+}
+.newsletterGrp > p {
+  color: var(--grey);
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+.newsletterGrp > form > * {
+  width: 100%;
+}
+.newsInput {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.7rem;
+  outline: none;
+  border: 1px solid var(--white);
+  background-color: transparent;
+}
+.newsInput::placeholder {
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+.newsSubmit {
+  padding: 1rem 1.5rem;
+  outline: none;
+  border: 1px solid var(--white);
+  color: var(--black);
+  font-weight: 400;
+}

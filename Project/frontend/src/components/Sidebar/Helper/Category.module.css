@@ -1,0 +1,31 @@
+.sidegrp {
+  padding: 0rem 3rem;
+  /* width: 100%; */
+}
+.sidebar-heading {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 3rem;
+  margin-top: 3.5rem;
+  line-height: 1.5;
+  font-family: "Lora", Arial, sans-serif;
+}
+.categoryGrp {
+  list-style: none;
+}
+.categoryGrp > li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  display: grid;
+  color: #202020;
+  grid-template-columns: 1fr max-content;
+}
+.categoryGrp > li:not(:last-child) {
+  border-bottom: 1px solid #dee2e6;
+}
+.categoryGrp > li > p {
+  color: #ccc;
+  cursor: default;
+}

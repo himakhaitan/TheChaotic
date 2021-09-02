@@ -31,3 +31,8 @@ a:link {
   scrollbar-width: 0;
   height: 100vh;
 }
+.main {
+  display: grid;
+  overflow-y: scroll;
+  grid-template-columns: 1fr 35%;
+}

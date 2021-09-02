@@ -1,0 +1,29 @@
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+}
+.tags > a {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--black);
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.sidegrp {
+  padding: 0rem 3rem;
+  /* width: 100%; */
+}
+.tags > a:hover {
+  background-color: var(--black);
+  color: var(--grey);
+}
+.sidebar-heading {
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 3rem;
+  margin-top: 3.5rem;
+  line-height: 1.5;
+  font-family: "Lora", Arial, sans-serif;
+}
