@@ -12,9 +12,7 @@ function App() {
       <Navigation />
       <Suspense>
         <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
+          <Route path="/" component={Home} exact />
         </Switch>
       </Suspense>
     </div>

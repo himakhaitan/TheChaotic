@@ -1,0 +1,48 @@
+.blogDiv {
+  display: grid;
+  column-gap: 3rem;
+  grid-template-columns: max-content 1fr;
+  padding: 2rem 5rem;
+}
+
+.blogImg > img {
+  width: 14rem;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.blogDetails {
+  margin-top: 1.5rem;
+}
+
+.blogDetails > h2 {
+  color: #000000;
+  font-size: 3rem;
+  font-weight: 400;
+  transition: all 0.3s;
+  font-family: "Lora", Arial, sans-serif;
+}
+
+.blogMeta {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+}
+.tagMeta {
+  color: #000000;
+  font-weight: 500;
+}
+.blogText {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #666666;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.readMore {
+  font-size: 1.5rem;
+  color: var(--blue);
+}
