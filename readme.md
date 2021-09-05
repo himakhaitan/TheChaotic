@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a><img src="./images/logo.png" width="200"></a>
+  <a><img src="./images/Logo.png" width="200"></a>
   <br>  
   The Chaotic - Blog Website
   <br>
