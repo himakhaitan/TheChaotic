@@ -38,7 +38,7 @@
   <a href="#description">Description</a> •
   <a href="#screenshot">Screenshot</a> •
   <a href="#installation-and-setup">Installation and Setup</a> • <a href="#dependcies">Dependencies</a> •
-  <a href="#license">License</a> • <a>Contribution</a>
+  <a href="#license">License</a> • <a href="#contribution">Contribution</a>
 </p>
 
 ## Description
