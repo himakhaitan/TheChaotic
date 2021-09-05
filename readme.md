@@ -7,14 +7,14 @@
 </h1>
 <p align="center">
   <a href="https://reactjs.org/"><img src="./images/reactjs.png" width="60"></a>
-
-&nbsp;&nbsp;&nbsp;
+  &nbsp;
 <a href="https://expressjs.com/">
 <img src="./images/expressjs.png" width="100">
 </a>
+&nbsp;
 <a href="https://www.mongodb.com/">
 <img src="./images/mongodb.png" width="100">
-</a>
+</a>&nbsp;
 <a href="https://nodejs.org/en/"><img src="./images/nodejs.png" width="60"></a>
 &nbsp;&nbsp;
 
