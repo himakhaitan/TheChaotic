@@ -27,7 +27,7 @@
     <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg">
        
   </a>
-  <a href="https://github.com/rishav4101/eth-supplychain-dapp/issues"><img src="https://img.shields.io/github/issues/rishav4101/eth-supplychain-dapp.svg"></a>
+  <a href="https://github.com/himakhaitan/TheChaotic/issues"><img src="https://img.shields.io/github/issues/himakhaitan/TheChaotic.svg"></a>
   
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-green.svg">
