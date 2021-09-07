@@ -48,7 +48,7 @@
 .active {
   color: var(--blue) !important;
 }
-.navigation > ul > li.active a::after {
+.navigation > ul > li > a.active::after {
   visibility: visible;
   transform: scaleX(1);
 }

@@ -2,25 +2,37 @@ import React from "react";
 import classes from "./Navigation.module.css";
 import Logo from "../UI/Logo/Logo";
 import { BiNavigation } from "react-icons/bi";
+import { NavLink } from "react-router-dom";
+
 const Navigation = () => {
   return (
     <header className={classes.header}>
       <nav className={classes.navigation}>
         <ul>
-          <li className={classes.active}>
-            <a href="/">Home</a>
+          <li>
+            <NavLink activeClassName={classes.active} exact to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="/technology">Technology</a>
+            <NavLink activeClassName={classes.active} exact to="/technology">
+              Technology
+            </NavLink>
           </li>
           <li>
-            <a href="/money">Money</a>
+            <NavLink activeClassName={classes.active} exact to="/money">
+              Money
+            </NavLink>
           </li>
           <li>
-            <a href="/about">About</a>
+            <NavLink activeClassName={classes.active} exact to="/about">
+              About
+            </NavLink>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <NavLink activeClassName={classes.active} exact to="/contact">
+              Contact
+            </NavLink>
           </li>
         </ul>
       </nav>
