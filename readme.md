@@ -44,7 +44,20 @@
 ## Description
 
 ## Screenshot
+Below are some of the screenshots of UI from The Chaotic
+
+### Home Page
 <img src="./images/screenshot1.png">
+
+### Contact Page
+<img src="./images/screenshot2.png">
+
+### Category Pages
+<img src="./images/screenshot4.png">
+<img src="./images/screenshot5.png">
+
+### About Pages
+<img src="./images/screenshot3.png">
 
 ## Installation and Setup
 
