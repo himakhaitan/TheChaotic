@@ -41,19 +41,21 @@
   background-color: var(--white);
   color: var(--blue);
 }
-.insight > p {
-  font-size: 1.4rem;
-  color: #b3b3b3;
-}
-.insight > .icon {
-  font-size: 1.5rem;
-}
 .insight {
   justify-self: right;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+.insight > p {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #b3b3b3;
+}
+.insight > .icon {
+  font-size: 1.5rem;
+}
+
 .blogTextContent {
   font-size: 1.5rem;
   line-height: 1.8;
