@@ -11,7 +11,7 @@ const LayoutB = (props) => {
         alt=""
       />
       <h3>
-        <a>A Loving Heart is the Truest Wisdom</a>
+        <a href="###">A Loving Heart is the Truest Wisdom</a>
       </h3>
       <p className={classes.blogTextContent}>
         Even the all-powerful Pointing has no control about the blind texts it

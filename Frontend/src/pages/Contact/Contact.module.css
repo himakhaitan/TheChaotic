@@ -1,0 +1,86 @@
+.main {
+  overflow-y: hidden;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    var(--white) 0%,
+    var(--white) 60%,
+    #7cd1f5 60%,
+    #7cd1f5 100%
+  );
+}
+
+/* Contact */
+.mainPrimary {
+  margin-top: 8rem;
+  padding: 2rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+}
+.mainLeft > h3,
+.mainRight > h3 {
+  font-family: "Lora", Arial, sans-serif;
+  font-size: 2.5rem;
+  color: #000;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.mainLeft > p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 2rem;
+}
+.mainRight {
+  padding: 3rem 2rem;
+  z-index: 100;
+  margin-top: 8rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
+}
+.mainRight > form > * {
+  width: 100%;
+}
+.formInput {
+  outline: none;
+  border: 1px solid var(--blue);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.mainRight > form > .submit {
+  margin-top: 1rem;
+  outline: none;
+  border: 1px solid var(--white);
+  background-color: var(--white);
+  color: var(--black);
+  padding: 1rem 1.5rem;
+}
+.mainRight > h3 {
+  margin-bottom: 3rem;
+}
+
+.mainSecondary {
+  color: var(--white);
+  font-size: 1.4rem;
+  line-height: 1.8;
+  padding: 0 5rem;
+}
+
+.socials {
+  margin-top: 2rem;
+  display: flex;
+  color: inherit;
+  gap: 1rem;
+  font-size: 2.5rem;
+  transition: all 0.3s;
+}
+.socials > a {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+.socials > a:hover {
+  color: var(--blue);
+  transform: scale(1.2);
+}

@@ -1,0 +1,52 @@
+.main {
+  display: grid;
+  overflow-y: hidden;
+  grid-template-columns: 45% 1fr;
+  height: 100vh;
+}
+
+/* About */
+.aboutImg > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutContent {
+  display: flex;
+  align-items: center;
+  padding: 0 4.5rem;
+}
+.aboutContent > div > h2 {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #000;
+}
+.aboutContent > div > h2 > span {
+  color: var(--blue);
+}
+
+.aboutContent > div > p {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #666;
+  font-weight: 400;
+}
+.socials {
+  margin-top: 2rem;
+  display: flex;
+  color: inherit;
+  gap: 1rem;
+  font-size: 2.5rem;
+  transition: all 0.3s;
+}
+.socials > a {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+.socials > a:hover {
+  color: var(--blue);
+  transform: scale(1.2);
+}

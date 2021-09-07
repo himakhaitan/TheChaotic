@@ -7,6 +7,9 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import CategoryA from "./pages/CategoryA/CategoryA";
 import CategoryB from "./pages/CategoryB/CategoryB";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+
 function App() {
   return (
     <div className="home">
@@ -16,8 +19,8 @@ function App() {
           <Route path="/" component={Home} exact />
           <Route path="/technology" component={CategoryA} exact />
           <Route path="/money" component={CategoryB} exact />
-          <Route path="/about" component={CategoryA} exact />
-          <Route path="/contact" component={CategoryB} exact />
+          <Route path="/about" component={About} exact />
+          <Route path="/contact" component={Contact} exact />
         </Switch>
       </Suspense>
     </div>

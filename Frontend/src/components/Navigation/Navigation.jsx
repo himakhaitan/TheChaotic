@@ -8,23 +8,23 @@ const Navigation = () => {
       <nav className={classes.navigation}>
         <ul>
           <li className={classes.active}>
-            <a href="home.html">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="../Technology/technology.html">Technology</a>
+            <a href="/technology">Technology</a>
           </li>
           <li>
-            <a href="../Money/Money.html">Money</a>
+            <a href="/money">Money</a>
           </li>
           <li>
-            <a href="../About/about.html">About</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <a href="../Contact/Contact.html">Contact</a>
+            <a href="/contact">Contact</a>
           </li>
         </ul>
       </nav>
-      <Logo className={classes.logo}/>
+      <Logo className={classes.logo} />
       <div className={classes.newsletter}>
         <h3 className={classes.newsletterHead}>Subscribe to Newsletter</h3>
         <div className={classes.newsletterform}>
