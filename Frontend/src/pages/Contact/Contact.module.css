@@ -34,6 +34,7 @@
   color: #666;
   margin-bottom: 2rem;
 }
+
 .mainRight {
   padding: 3rem 2rem;
   z-index: 100;
@@ -51,6 +52,7 @@
 }
 .mainRight > form > .submit {
   margin-top: 1rem;
+  cursor: pointer;
   outline: none;
   border: 1px solid var(--white);
   background-color: var(--white);
