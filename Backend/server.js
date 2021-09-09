@@ -6,12 +6,15 @@ const logging = require("./middlewares/logging");
 const http = require("http");
 const app = express();
 
+const passport = require("passport");
 const session = require("express-session");
 const mongoose = require("mongoose");
 
 app.use(cors);
 app.use(express.json());
 app.use(compression());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(helmet);
 app.use(logging);
 app.use(
@@ -22,6 +25,14 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// Passport Setup
+require("./config/passport");
+
+const authRoute = require("./routes/authroutes");
+const newsletterRoute = require("./routes/newsletterRouter");
+app.use("/auth/google", authRoute);
+app.use("/newsletter", newsletterRoute);
 
 // GENERAL ROUTE
 
