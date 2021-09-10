@@ -86,11 +86,31 @@
 }
 .newsInput {
   padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  width: 100%;
   margin-top: 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
   outline: none;
   border: 1px solid var(--white);
+  grid-column: 1/-1;
+  grid-row: 1/-1;
   background-color: transparent;
+}
+.newsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+}
+.newsDivIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1/-1;
+  grid-column: 2/-1;
+  margin: 0 1rem;
+}
+.newsLetterIcon {
+  color: white;
+  font-size: 2rem;
 }
 .newsInput::placeholder {
   color: var(--white);
@@ -98,8 +118,25 @@
 }
 .newsSubmit {
   padding: 1rem 1.5rem;
+  margin-top: 1rem;
   outline: none;
   border: 1px solid var(--white);
   color: var(--black);
   font-weight: 400;
+  cursor: pointer;
+}
+.newsSubmit:disabled {
+  color: var(--white);
+}
+.successMessage {
+  font-size: 1.2rem;
+  margin-top: 0.4rem;
+  margin-left: 1rem;
+  color: #57CC99;
+}
+.errorMessage {
+  font-size: 1.2rem;
+  margin-top: 0.4rem;
+  margin-left: 1rem;
+  color: #FF6B6B;
 }

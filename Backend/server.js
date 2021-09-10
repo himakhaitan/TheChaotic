@@ -1,6 +1,6 @@
 const express = require("express");
 const compression = require("compression");
-const cors = require("./middlewares/cors");
+const cors = require('cors');
 const helmet = require("./middlewares/helemt");
 const logging = require("./middlewares/logging");
 const http = require("http");
@@ -10,7 +10,7 @@ const passport = require("passport");
 const session = require("express-session");
 const mongoose = require("mongoose");
 
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 app.use(compression());
 app.use(passport.initialize());

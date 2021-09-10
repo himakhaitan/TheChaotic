@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
-
+import validator from "validator";
 import classes from "./Sidebar.module.css";
+
+import newsletterRegister from "../../utils/newsletter";
 
 import Category from "./Helper/Category";
 import TagCloud from "./Helper/TagCloud";
 import BlogList from "./Helper/BlogList";
+
+import { HiOutlineCheckCircle } from "react-icons/hi";
+import { BiErrorCircle } from "react-icons/bi";
 
 const Sidebar = () => {
   const TagData = [
@@ -92,6 +97,40 @@ const Sidebar = () => {
       count: 3,
     },
   ];
+  const [newsLetter, setNewsLetter] = useState("");
+  const [newsLetterError, setNewsLetterError] = useState(false);
+
+  const changeHandler = (event) => {
+    setSubmitMessage({
+      success: true,
+      message: "",
+    })
+    setNewsLetter(event.target.value);
+    if (!validator.isEmail(newsLetter)) {
+      setNewsLetterError(true);
+    } else {
+      setNewsLetterError(false);
+    }
+  };
+  const [submitMessage, setSubmitMessage] = useState({
+    success: true,
+    message: "",
+  });
+  const submitHandler = async () => {
+    if (newsLetter.length === 0) {
+      setNewsLetterError(true);
+    } else {
+      const { success, message } = await newsletterRegister(newsLetter);
+      if (success) {
+        setNewsLetter("");
+      }
+      setSubmitMessage({
+        success,
+        message,
+      });
+    }
+  };
+
   return (
     <div className={classes.sidebar}>
       <div className={classes.sidegrp + " " + classes.searchgrp}>
@@ -105,7 +144,7 @@ const Sidebar = () => {
         </div>
       </div>
       <Category heading="Categories" data={categoryData} />
-      <BlogList/>
+      <BlogList />
       <TagCloud heading="Tag Cloud" data={TagData} />
       <div className={classes.newsletterGrp}>
         <h3 className={classes["news-heading"]}>Newsletter</h3>
@@ -114,12 +153,39 @@ const Sidebar = () => {
           Vokalia
         </p>
         <form action="">
+          <div className={classes.newsContainer}>
+            <input
+              type="text"
+              value={newsLetter}
+              className={classes.newsInput}
+              placeholder="E-mail Address"
+              onChange={changeHandler}
+            />
+            <div className={classes.newsDivIcon}>
+              {newsLetterError && (
+                <BiErrorCircle className={classes.newsLetterIcon} />
+              )}
+              {!newsLetterError && newsLetter && (
+                <HiOutlineCheckCircle className={classes.newsLetterIcon} />
+              )}
+            </div>
+          </div>
+          <p
+            className={
+              submitMessage.success
+                ? classes.successMessage
+                : classes.errorMessage
+            }
+          >
+            {submitMessage.message}
+          </p>
           <input
-            type="text"
-            className={classes.newsInput}
-            placeholder="E-mail Address"
+            type="button"
+            value="Submit"
+            disabled={newsLetterError}
+            onClick={submitHandler}
+            className={classes.newsSubmit}
           />
-          <input type="submit" value="Submit" className={classes.newsSubmit} />
         </form>
       </div>
       <Category heading="Archives" data={archieveData} />
