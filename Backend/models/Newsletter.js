@@ -13,6 +13,7 @@ const NewsletterSchema = new Schema({
   preference: {
     type: Boolean,
     required: true,
+    default: true,
   },
 });
 

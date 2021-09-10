@@ -6,9 +6,10 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
+  // User.findById(id, function (err, user) {
+  //   done(err, user);
+  // });
+  done(null, null);
 });
 
 passport.use(
@@ -19,9 +20,10 @@ passport.use(
       callbackURL: "http://localhost:8000/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return cb(err, user);
-      });
+      // User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      //   return cb(err, user);
+      // });
+      cb(null, null);
     }
   )
 );
