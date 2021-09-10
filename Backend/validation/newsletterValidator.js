@@ -1,7 +1,7 @@
 const validator = require("validator");
 const isEmpty = require("../utils/isEmpty");
 
-const validateEmail = (data) => {
+const validateNewsletter = (data) => {
   let errors = {};
   data.email = !isEmpty(data.email) ? data.email : "";
 
@@ -18,4 +18,4 @@ const validateEmail = (data) => {
   };
 };
 
-module.exports = validateEmail;
+module.exports = validateNewsletter;

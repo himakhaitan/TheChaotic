@@ -17,6 +17,7 @@ Base URL : http://localhost:8000
     <tr>
       <th style="text-align:left">Endpoint</th>
       <th style="text-align:left">Method</th>
+      <th style="text-align:left">Access</th>
       <th style="text-align:left">Request</th>
       <th style="text-align:left">Response</th>
     </tr>
@@ -25,6 +26,7 @@ Base URL : http://localhost:8000
 <tr>
       <td style="text-align:left">/</td>
       <td style="text-align:left">GET</td>
+      <td style="text-align:left">Public</td>
       <td style="text-align:left">none</td>
       <td style="text-align:left">
         <p>{</p>
@@ -34,8 +36,9 @@ Base URL : http://localhost:8000
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">/</td>
+      <td style="text-align:left">/connect/newsletter/join</td>
       <td style="text-align:left">POST</td>
+       <td style="text-align:left">Public</td>
       <td style="text-align:left">
         <p>{</p>
         <p>email: &quot;String&quot;,</p>
