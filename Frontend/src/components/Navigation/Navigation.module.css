@@ -103,3 +103,16 @@
   line-height: 1.8;
   letter-spacing: 0.1rem;
 }
+
+.success {
+  color: var(--success);
+}
+.error {
+  color: var(--error);
+}
+
+.message {
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  margin-left: 0.25rem;
+}

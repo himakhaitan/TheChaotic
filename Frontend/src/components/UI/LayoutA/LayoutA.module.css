@@ -29,10 +29,19 @@
   gap: 1.5rem;
   font-size: 1.2rem;
 }
+.blogMeta > div,
+.tagMeta > a {
+  display: flex;
+  line-height: 1;
+  gap: 0.4rem;
+  align-items: top;
+}
 .tagMeta {
   color: #000000;
+  line-height: 1;
   font-weight: 500;
 }
+
 .blogText {
   font-size: 1.5rem;
   line-height: 1.8;

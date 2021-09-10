@@ -132,11 +132,11 @@
   font-size: 1.2rem;
   margin-top: 0.4rem;
   margin-left: 1rem;
-  color: #57CC99;
+  color: var(--success);
 }
 .errorMessage {
   font-size: 1.2rem;
   margin-top: 0.4rem;
   margin-left: 1rem;
-  color: #FF6B6B;
+  color: var(--error);
 }

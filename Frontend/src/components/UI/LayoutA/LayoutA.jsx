@@ -1,4 +1,5 @@
 import classes from "./LayoutA.module.css";
+import {BiCalendarAlt, BiFolder, BiCommentDetail} from 'react-icons/bi';
 
 const LayoutA = (props) => {
   return (
@@ -12,15 +13,15 @@ const LayoutA = (props) => {
         </h2>
         <div className={classes.blogMeta}>
           <div>
-            <span>C</span> June 29, 2019
+            <span><BiCalendarAlt/></span> June 29, 2019
           </div>
           <div className={classes.tagMeta}>
             <a href="hello">
-              <span>F</span> Travel
+              <span><BiFolder/></span> Travel
             </a>
           </div>
           <div>
-            <span>C</span> 5 Comments
+            <span><BiCommentDetail/></span> 5 Comments
           </div>
         </div>
         <p className={classes.blogText}>

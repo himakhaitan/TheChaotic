@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Navigation.module.css";
 import Logo from "../UI/Logo/Logo";
+import validator from "validator";
 import { BiNavigation } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import newsletterRegister from "../../utils/newsletter";
 
 const Navigation = () => {
+  const [email, setEmail] = useState("");
+  const [errorState, setErrorState] = useState({
+    success: true,
+    message: "",
+  });
+
+  const emailChangeHandler = (event) => {
+    setEmail(event.target.value);
+  };
+  const submitHandler = async () => {
+    if (email.length === 0) {
+      setErrorState({
+        success: false,
+        message: "E-mail Can't Be Empty",
+      });
+    } else {
+      if (!validator.isEmail(email)) {
+        setErrorState({
+          success: false,
+          message: "Invalid E-mail",
+        });
+      } else {
+        const { success, message } = await newsletterRegister(email);
+        if (success) {
+          setEmail("");
+        }
+        console.log(success, message);
+        setErrorState({
+          success,
+          message,
+        });
+      }
+    }
+  };
   return (
     <header className={classes.header}>
       <nav className={classes.navigation}>
@@ -42,13 +78,18 @@ const Navigation = () => {
         <div className={classes.newsletterform}>
           <input
             type="text"
-            className={classes.newsletterInput}
+            value={email}
+            onChange={emailChangeHandler}
+            className={`${classes.newsletterInput}`}
             placeholder="Enter Email Address"
           />
-          <div className={classes.submitIcon}>
+          <div className={classes.submitIcon} onClick={submitHandler}>
             <BiNavigation />
           </div>
         </div>
+        <p className={`${!errorState.success ? classes.error : classes.success} ${classes.message}`}>
+          &nbsp;{errorState.message}
+        </p>
       </div>
       <div className={classes.copyright}>
         <p>
