@@ -33,5 +33,20 @@ Base URL : http://localhost:8000
         <p>}</p>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left">/</td>
+      <td style="text-align:left">POST</td>
+      <td style="text-align:left">
+        <p>{</p>
+        <p>email: &quot;String&quot;,</p>
+        <p>}</p>
+      </td>
+      <td style="text-align:left">
+        <p>{</p>
+        <p>success: &quot;Boolean&quot;,</p>
+        <p>Message: &quot;String&quot;</p>
+        <p>}</p>
+      </td>
+    </tr>
 </tbody>
 </table>

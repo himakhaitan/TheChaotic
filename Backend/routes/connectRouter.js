@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
 
-const validateNewsletter = require("../validation/newsletterValidator");
+const emailValidator = require("../validation/emailValidator");
 const Newsletter = require("../models/Newsletter");
-
+const Contact = require("../models/Contact");
 /*
 Method  : POST
-Route   : /newsletter/join
+Route   : /connect/newsletter/join
 Access  : Public
 */
-router.post("/join", async (req, res) => {
-  const { errors, isValid } = await validateNewsletter(req.body);
+router.post("/newsletter/join", async (req, res) => {
+  const { errors, isValid } = await emailValidator(req.body);
   if (!isValid) {
-    return res.status(406).json({
+    return res.json({
       success: false,
       message: errors.email,
     });
@@ -51,6 +51,24 @@ router.post("/join", async (req, res) => {
       message: "E-mail Registration Successfull!",
     });
   });
+});
+
+/*
+Method  : POST
+Route   : /connect/form/submit
+Access  : Public
+*/
+router.post("/form/submit", async (req, res) => {
+  const { errors, isValid } = await emailValidator(req.body);
+  if (!isValid) {
+    return res.json({
+      success: false,
+      message: errors.email,
+    });
+  }
+
+  // Checking Array Length
+  
 });
 
 module.exports = router;

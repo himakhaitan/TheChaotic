@@ -30,11 +30,11 @@ app.use(
 require("./config/passport");
 
 const authRoute = require("./routes/authroutes");
-const newsletterRoute = require("./routes/newsletterRouter");
+const connectRoute = require("./routes/connectRouter");
 
 
 app.use("/auth/google", authRoute);
-app.use("/newsletter", newsletterRoute);
+app.use("/connect", connectRoute);
 
 // GENERAL ROUTE
 
