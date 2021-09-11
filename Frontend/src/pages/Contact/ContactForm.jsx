@@ -5,6 +5,7 @@ import { HiOutlineCheckCircle } from "react-icons/hi";
 import { BiErrorCircle } from "react-icons/bi";
 import axios from "axios";
 import varibles from "../../config/variables";
+import Overlay from "../../components/UI/Overlay/Overlay";
 const InputContact = (props) => {
   return (
     <div>
@@ -25,6 +26,10 @@ const InputContact = (props) => {
 };
 
 const ContactForm = () => {
+  const [messageState, setMessageState] = useState({
+    active: false,
+    messasge: "",
+  });
   const [email, setEmail] = useState({
     error: false,
     errorMessage: "",
@@ -134,14 +139,18 @@ const ContactForm = () => {
       toBeSentData
     );
     if (response) {
-      if (response.data.success) {
-        alert(response.data.message);
-        nullifyInput();
-      } else {
-        alert(response.data.message);
-        nullifyInput();
-      }
+      setMessageState({
+        active: true,
+        message: response.data.message,
+      });
     }
+  };
+  const closeFunc = () => {
+    setMessageState({
+      active: false,
+      message: "",
+    });
+    nullifyInput();
   };
   return (
     <Fragment>
@@ -183,6 +192,7 @@ const ContactForm = () => {
           type="submit"
           value="Submit"
         />
+        {messageState.active && <Overlay onClick={closeFunc} message={messageState.message} />}
       </form>
     </Fragment>
   );
