@@ -2,7 +2,7 @@ import TwoColUI from "../../components/UI/Structure/TwoColUI";
 import classes from "./Contact.module.css";
 import { ImInstagram } from "react-icons/im";
 import { FaGithub, FaLinkedin, FaDev } from "react-icons/fa";
-
+import ContactForm from "./ContactForm";
 const Contact = () => {
   return (
     <TwoColUI className={classes.main}>
@@ -48,26 +48,7 @@ const Contact = () => {
         </div>
         <div className={classes.mainRight}>
           <h3>Say Something</h3>
-          <form action="">
-            <input
-              className={classes.formInput}
-              type="text"
-              id="name"
-              placeholder="Name"
-            />
-            <input
-              className={classes.formInput}
-              type="email"
-              placeholder="E-mail Address"
-            />
-            <input
-              className={classes.formInput}
-              //   type="text"
-              type="textArea"
-              placeholder="Your Message"
-            />
-            <input className={classes.submit} type="submit" value="Submit" />
-          </form>
+          <ContactForm />
         </div>
       </div>
       <div className={classes.mainSecondary}>

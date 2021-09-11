@@ -45,10 +45,21 @@
   width: 100%;
 }
 .formInput {
+  width: 100%;
   outline: none;
   border: 1px solid var(--blue);
   padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
+.inputIcon {
+  color: var(--black);
+  font-size: 2rem;
+  grid-row: 1/-1;
+  grid-column: 2/-1;
+  margin: 0.4rem 0.7rem;
 }
 .mainRight > form > .submit {
   margin-top: 1rem;
@@ -59,8 +70,14 @@
   color: var(--black);
   padding: 1rem 1.5rem;
 }
+.mainRight > form > div {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr max-content;
+}
 .mainRight > h3 {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .mainSecondary {
@@ -85,4 +102,9 @@
 .socials > a:hover {
   color: var(--blue);
   transform: scale(1.2);
+}
+.mainRight > form > .submit:disabled {
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: auto;
 }
