@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a><img src="./images/Logo.png" width="200"></a>
+  <a><img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/Logo.png" width="200"></a>
   <br>  
   The Chaotic - Blog Website
   <br>
@@ -8,15 +8,15 @@
 <p align="center">
 
 <a href="https://www.mongodb.com/">
-<img src="./images/mongodb.png" width="100">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/mongodb.png" width="100">
 </a>&nbsp;
 <a href="https://expressjs.com/">
-<img src="./images/expressjs.png" width="100">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/expressjs.png" width="100">
 </a>
 &nbsp;
-<a href="https://reactjs.org/"><img src="./images/reactjs.png" width="60"></a>
+<a href="https://reactjs.org/"><img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/reactjs.png" width="60"></a>
   &nbsp;
-<a href="https://nodejs.org/en/"><img src="./images/nodejs.png" width="60"></a>
+<a href="https://nodejs.org/en/"><img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/nodejs.png" width="60"></a>
 &nbsp;&nbsp;
 
 </p>
@@ -47,17 +47,17 @@
 Below are some of the screenshots of UI from The Chaotic
 
 ### Home Page
-<img src="./images/screenshot1.png">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot1.png">
 
 ### Contact Page
-<img src="./images/screenshot2.png">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot2.png">
 
 ### Category Pages
-<img src="./images/screenshot4.png">
-<img src="./images/screenshot5.png">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot4.png">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot5.png">
 
 ### About Pages
-<img src="./images/screenshot3.png">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot3.png">
 
 ## Installation and Setup
 
