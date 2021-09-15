@@ -1,6 +1,6 @@
 const express = require("express");
 const compression = require("compression");
-const cors = require('cors');
+const cors = require("cors");
 const helmet = require("./middlewares/helemt");
 const logging = require("./middlewares/logging");
 const http = require("http");
@@ -31,10 +31,11 @@ require("./config/passport");
 
 const authRoute = require("./routes/authroutes");
 const connectRoute = require("./routes/connectRouter");
-
+const blogRoute = require("./routes/blogRoutes");
 
 app.use("/auth/google", authRoute);
 app.use("/connect", connectRoute);
+app.use("/blog", blogRoute);
 
 // GENERAL ROUTE
 
