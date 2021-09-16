@@ -25,17 +25,20 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use("/uploads", express.static("uploads"));
 
 // Passport Setup
 require("./config/passport");
 
-const authRoute = require("./routes/authroutes");
+const authRoute = require("./routes/authRoutes");
 const connectRoute = require("./routes/connectRouter");
 const blogRoute = require("./routes/blogRoutes");
+const helperRoute = require("./routes/helperRoutes");
 
 app.use("/auth/google", authRoute);
 app.use("/connect", connectRoute);
 app.use("/blog", blogRoute);
+app.use("/assist", helperRoute);
 
 // GENERAL ROUTE
 

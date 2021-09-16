@@ -11,14 +11,16 @@ const BlogSchema = new Schema({
     required: true,
   },
   image: {
-    data: Buffer,
-    contentType: String,
+    data: {
+      type: Buffer,
+    },
+    contentType: {
+      type: String,
+    },
   },
   author: {
-    name: {
-      type: String,
-      required: true,
-    },
+    type: Schema.Types.ObjectId,
+    ref: "authors",
   },
   likes: {
     type: Number,
@@ -28,17 +30,34 @@ const BlogSchema = new Schema({
     default: Date.now,
   },
   category: {
-    type: String,
-    required: true,
+    type: Schema.Types.ObjectId,
+    ref: "categorys",
   },
   tags: [
     {
-      tag: {
+      type: String,
+    },
+  ],
+  comments: [
+    {
+      author: {
         type: String,
+        required: true,
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+      likes: {
+        type: Number,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
       },
     },
   ],
 });
 
-const Blog = mongoose.model("Blog", BlogSchema);
+const Blog = mongoose.model("blog", BlogSchema);
 module.exports = Blog;
