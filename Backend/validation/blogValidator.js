@@ -14,7 +14,7 @@ const blogValidator = (data) => {
     errors.content = "Content must be atleat 100 charachter length.";
   }
 
-  if (validator.isLength(data.title, { max: 100, min: 6 })) {
+  if (!validator.isLength(data.title, { max: 100, min: 6 })) {
     errors.title = "Title must be 6 to 100 charachter length.";
   }
 

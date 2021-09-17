@@ -30,6 +30,7 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
 
   if (!author) {
     errors.author = "Author Not Find!";
+    fs.unlinkSync("uploads\\" + req.file.filename);
     return res.json({
       success: false,
       errors,
@@ -42,6 +43,7 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
 
   if (!category) {
     errors.category = "Category not Found!";
+    fs.unlinkSync("uploads\\" + req.file.filename);
     return res.json({
       success: false,
       errors,
@@ -61,12 +63,35 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
       data: fs.readFileSync("uploads\\" + req.file.filename),
       contentTyps: req.file.mimetype,
     },
-    author,
+    author: req.body.author,
     likes: 0,
-    category,
+    category: req.body.category,
     tags,
   };
-  console.log(submitData);
+  const newBlog = await new Blog(submitData);
+
+  if (!newBlog) {
+    fs.unlinkSync("uploads\\" + req.file.filename);
+    return res.json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+
+  const savedBlog = await newBlog.save();
+
+  if (!savedBlog) {
+    fs.unlinkSync("uploads\\" + req.file.filename);
+    return res.json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+  fs.unlinkSync("uploads\\" + req.file.filename);
+
+  return res.json({
+    savedBlog: savedBlog.id,
+  });
 });
 
 module.exports = router;
