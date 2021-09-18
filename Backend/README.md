@@ -9,6 +9,7 @@ description: The Chaotic Backend Build
 PORT by Default : 8000
 
 Base URL : http://localhost:8000
+<br>
 
 ### ENDPOINT REFERENCE
 
@@ -47,7 +48,25 @@ Base URL : http://localhost:8000
       <td style="text-align:left">
         <p>{</p>
         <p>success: &quot;Boolean&quot;,</p>
-        <p>Message: &quot;String&quot;</p>
+        <p>message: &quot;String&quot;</p>
+        <p>}</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">/connect/form/submit</td>
+      <td style="text-align:left">POST</td>
+       <td style="text-align:left">Public</td>
+      <td style="text-align:left">
+        <p>{</p>
+        <p>name: &quot;String&quot;,</p>
+        <p>email: &quot;String&quot;,</p>
+        <p>message: &quot;String&quot;,</p>
+        <p>}</p>
+      </td>
+      <td style="text-align:left">
+        <p>{</p>
+        <p>success: &quot;Boolean&quot;,</p>
+        <p>message: &quot;String&quot;</p>
         <p>}</p>
       </td>
     </tr>

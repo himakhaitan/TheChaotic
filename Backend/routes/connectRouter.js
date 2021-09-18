@@ -9,6 +9,7 @@ const Contact = require("../models/Contact");
 /*
 Method  : POST
 Route   : /connect/newsletter/join
+Func    : Newsletter Signup
 Access  : Public
 */
 router.post("/newsletter/join", async (req, res) => {
@@ -55,12 +56,13 @@ router.post("/newsletter/join", async (req, res) => {
   });
 });
 
+
 /*
 Method  : POST
 Route   : /connect/form/submit
+Func    : Contact For Submit
 Access  : Public
 */
-
 router.post("/form/submit", async (req, res) => {
   const { errors, isValid } = await contactValidator(req.body);
 

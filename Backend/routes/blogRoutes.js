@@ -12,6 +12,7 @@ const Category = require("../models/Category");
 Method  : POST
 Route   : /blog/post/new
 Access  : Private
+Func    : Create New Blog
 */
 router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
   // Checking Data Validity
@@ -91,6 +92,32 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
 
   return res.json({
     savedBlog: savedBlog.id,
+  });
+});
+
+
+/*
+Method  : GET
+Route   : /blog/post/:id
+Access  : Public
+Func    : Fetch Blog using ID
+*/
+router.get("/post/:id", async (req, res) => {
+  const id = req.params.id;
+
+  const data = await Blog.findOne({id: id});
+  console.log(data);
+  if (!data) {
+    return res.json({
+      success: false,
+      message: "No blog Available!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Blog Found!",
+    blog: data
   });
 });
 
