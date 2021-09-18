@@ -20,7 +20,7 @@ const BlogSchema = new Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "authors",
+    ref: "author",
     required: true
   },
   likes: {
@@ -32,7 +32,7 @@ const BlogSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: "categorys",
+    ref: "category",
     required: true,
   },
   tags: [

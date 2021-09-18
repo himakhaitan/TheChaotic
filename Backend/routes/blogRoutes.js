@@ -2,6 +2,7 @@ const upload = require("../middlewares/upload");
 const fs = require("fs");
 const router = require("express").Router();
 const blogValidator = require("../validation/blogValidator");
+const mongoose = require("mongoose");
 
 // Models
 const Blog = require("../models/Blog");
@@ -64,9 +65,9 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
       data: fs.readFileSync("uploads\\" + req.file.filename),
       contentTyps: req.file.mimetype,
     },
-    author: req.body.author,
+    author: mongoose.Types.ObjectId(req.body.author),
     likes: 0,
-    category: req.body.category,
+    category: mongoose.Types.ObjectId(req.body.category),
     tags,
   };
   const newBlog = await new Blog(submitData);
@@ -91,10 +92,11 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
   fs.unlinkSync("uploads\\" + req.file.filename);
 
   return res.json({
-    savedBlog: savedBlog.id,
+    success: true,
+    blog: savedBlog,
+    message: "Blog Created",
   });
 });
-
 
 /*
 Method  : GET
@@ -104,8 +106,13 @@ Func    : Fetch Blog using ID
 */
 router.get("/post/:id", async (req, res) => {
   const id = req.params.id;
-
-  const data = await Blog.findOne({id: id});
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+  const data = await Blog.findOne({ id: id });
   console.log(data);
   if (!data) {
     return res.json({
@@ -117,8 +124,94 @@ router.get("/post/:id", async (req, res) => {
   return res.json({
     success: true,
     message: "Blog Found!",
-    blog: data
+    blog: data,
   });
 });
 
+/*
+Method  : GET
+Route   : /blog/all
+Access  : Public
+Func    : Fetch All Blogs
+*/
+router.get("/all", async (req, res) => {
+  const blogs = await Blog.find({});
+
+  if (!blogs || blogs.length === 0) {
+    return res.json({
+      success: false,
+      message: "No Blogs Found!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Blogs Found!",
+    blogs,
+  });
+});
+
+/*
+Method  : GET
+Route   : /blog/category/:id
+Access  : Public
+Func    : Fetch All Blogs of a Category
+*/
+router.get("/category/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Category ID!",
+    });
+  }
+
+  const blogs = await Blog.find({ category: id })
+    .populate("category.name")
+    .populate("author.name");
+  if (!blogs || blogs.length === 0) {
+    return res.json({
+      success: false,
+      message: "No Blogs Found!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Blogs Found!",
+    blogs,
+  });
+});
+
+/*
+Method  : GET
+Route   : /blog/author/:id
+Access  : Public
+Func    : Fetch All Blogs of a Category
+*/
+router.get("/author/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Author ID!",
+    });
+  }
+
+  const blogs = await Blog.find({ author: id })
+    .populate("category.name")
+    .populate("author.name");
+  if (!blogs || blogs.length === 0) {
+    return res.json({
+      success: false,
+      message: "No Blogs Found!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Blogs Found!",
+    blogs,
+  });
+});
 module.exports = router;
