@@ -1,0 +1,52 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(2px);
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  left: 0;
+  cursor: progress;
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  justify-content: center;
+}
+
+.spinner {
+  animation: Rotate 2.4s both infinite linear;
+}
+.path {
+  animation: DrawLine 1.6s both infinite alternate linear;
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 50;
+}
+@keyframes Rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes DrawLine {
+  0% {
+    stroke-dasharray: 0 126;
+  }
+  100% {
+    stroke-dasharray: 126 126;
+  }
+}
+
+.text {
+  font-family: "Lora", Arial, serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  user-select: none;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.text > span {
+  font-size: 3.5rem;
+}
