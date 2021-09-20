@@ -9,8 +9,8 @@ const categoryValidator = (data) => {
   if (isEmpty(data.name)) {
     errors.name = "Name must not be Empty";
   }
-  if (!validator.isLength(data.desc, { min: 10, max: 100 })) {
-    errors.desc = "Description must be 10 to 100 char long!";
+  if (!validator.isLength(data.desc, { min: 10, max: 200 })) {
+    errors.desc = "Description must be 10 to 200 char long!";
   }
   return {
     errors,

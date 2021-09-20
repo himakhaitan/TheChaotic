@@ -1,7 +1,11 @@
+// import { useEffect } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
 import { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { essentialAction } from "./store/slice/essential";
 
 // Pages
 import Home from "./pages/Home/Home";
@@ -10,7 +14,16 @@ import CategoryB from "./pages/CategoryB/CategoryB";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 
+// Components
+import Spinner from "./components/UI/Spinner/Spinner";
+
 function App() {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(essentialAction.fetchCategories());
+  // }, [dispatch]);
+  const isLoading = useSelector((state) => state.essential.isLoading);
   return (
     <div className="home">
       <Navigation />
@@ -23,6 +36,7 @@ function App() {
           <Route path="/contact" component={Contact} exact />
         </Switch>
       </Suspense>
+      {isLoading && <Spinner />}
     </div>
   );
 }
