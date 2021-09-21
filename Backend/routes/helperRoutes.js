@@ -127,4 +127,34 @@ router.post("/category/create", async (req, res) => {
   });
 });
 
+// Category Routes
+
+/*
+Method  : GET
+Route   : /assist/category/all
+Access  : Public
+*/
+
+router.get("/category/all", async (req, res) => {
+  const categories = await Category.find({});
+
+  if (!categories) {
+    return res.json({
+      success: false,
+      message: "No Category Found!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Categories Found!",
+    categories: categories.map((item) => {
+      return {
+        name: item.name,
+        count: 12,
+      };
+    }),
+  });
+});
+
 module.exports = router;

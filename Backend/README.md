@@ -152,7 +152,22 @@ Base URL : http://localhost:8000
     </tr>
      <tr>
       <td style="text-align:left">/blog/all</td>
-      <td style="text-align:left">all</td>
+      <td style="text-align:left">GET</td>
+       <td style="text-align:left">Public</td>
+      <td style="text-align:left">
+       none
+      </td>
+      <td style="text-align:left">
+        <p>{</p>
+        <p>success: &quot;Boolean&quot;,</p>
+        <p>message: &quot;String&quot;</p>
+         <p>blogs: &quot;Object&quot;</p>
+        <p>}</p>
+      </td>
+    </tr>
+      <tr>
+      <td style="text-align:left">/assist/category/all</td>
+      <td style="text-align:left">GET</td>
        <td style="text-align:left">Public</td>
       <td style="text-align:left">
        none

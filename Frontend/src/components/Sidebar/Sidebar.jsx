@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import validator from "validator";
 import classes from "./Sidebar.module.css";
+import { useSelector } from "react-redux";
 
 import newsletterRegister from "../../utils/newsletter";
 
@@ -13,6 +14,7 @@ import { HiOutlineCheckCircle } from "react-icons/hi";
 import { BiErrorCircle } from "react-icons/bi";
 
 const Sidebar = () => {
+  const categoryData = useSelector((state) => state.essential.categories);
   const TagData = [
     {
       item: "Money",
@@ -41,33 +43,6 @@ const Sidebar = () => {
     {
       item: "Code",
       href: "www",
-    },
-  ];
-  const categoryData = [
-    {
-      href: "www",
-      item: "Fashion",
-      count: 12,
-    },
-    {
-      href: "www",
-      item: "Technology",
-      count: 8,
-    },
-    {
-      href: "www",
-      item: "Travel",
-      count: 2,
-    },
-    {
-      href: "www",
-      item: "Money",
-      count: 20,
-    },
-    {
-      href: "www",
-      item: "Photography",
-      count: 3,
     },
   ];
   const archieveData = [
@@ -104,7 +79,7 @@ const Sidebar = () => {
     setSubmitMessage({
       success: true,
       message: "",
-    })
+    });
     setNewsLetter(event.target.value);
     if (!validator.isEmail(newsLetter)) {
       setNewsLetterError(true);

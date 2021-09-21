@@ -1,11 +1,11 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
 import { Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { useDispatch } from "react-redux";
-// import { essentialAction } from "./store/slice/essential";
+import { useDispatch } from "react-redux";
+import { updateCategories } from "./store/slice/essential";
 
 // Pages
 import Home from "./pages/Home/Home";
@@ -18,11 +18,12 @@ import Contact from "./pages/Contact/Contact";
 import Spinner from "./components/UI/Spinner/Spinner";
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(essentialAction.fetchCategories());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(updateCategories());
+  }, [dispatch]);
+
   const isLoading = useSelector((state) => state.essential.isLoading);
   return (
     <div className="home">
