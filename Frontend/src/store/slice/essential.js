@@ -38,6 +38,7 @@ export const updateCategories = () => {
               count: item.count,
               href: `/category/${item.id}`,
               item: item.name,
+              id: item.id
             };
           })
         )

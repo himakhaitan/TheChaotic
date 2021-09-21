@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import variable from "../../config/variables";
+import { essentialAction } from "./essential";
 // import { essentialAction } from "./essential";
 
 let initialState = {
   byCategory: [],
   current: {},
+  home: [],
 };
 
 const blogSlice = createSlice({
@@ -22,10 +24,26 @@ const blogSlice = createSlice({
         alert(`Data Already Fetched for ${action.payload.categoryID}`);
       }
     },
+    fetchHome(state, action) {
+      state.home = action.payload;
+    },
   },
 });
 
 export const blogActions = blogSlice.actions;
+
+export const fetchHome = () => {
+  return async (dispatch) => {
+    dispatch(essentialAction.toggleSpinner());
+    const response = await axios.get(`${variable.serverURL}/blog/home`);
+    if (!response.data.success) {
+      alert(response.data.message);
+    } else {
+      dispatch(blogActions.fetchHome(response.data.blogs));
+    }
+    dispatch(essentialAction.toggleSpinner());
+  };
+};
 
 export const fetchByCategory = (categoryID) => {
   return async (dispatch) => {

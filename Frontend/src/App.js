@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateCategories } from "./store/slice/essential";
+import { fetchHome } from "./store/slice/blog";
 
 // Pages
 import Home from "./pages/Home/Home";
@@ -20,6 +21,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchHome());
     dispatch(updateCategories());
   }, [dispatch]);
 

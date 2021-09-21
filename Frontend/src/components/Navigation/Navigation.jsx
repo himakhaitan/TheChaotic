@@ -87,7 +87,11 @@ const Navigation = () => {
             <BiNavigation />
           </div>
         </div>
-        <p className={`${!errorState.success ? classes.error : classes.success} ${classes.message}`}>
+        <p
+          className={`${
+            !errorState.success ? classes.error : classes.success
+          } ${classes.message}`}
+        >
           &nbsp;{errorState.message}
         </p>
       </div>

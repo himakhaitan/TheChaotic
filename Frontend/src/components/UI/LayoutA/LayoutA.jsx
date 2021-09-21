@@ -1,35 +1,71 @@
 import classes from "./LayoutA.module.css";
-import {BiCalendarAlt, BiFolder, BiCommentDetail} from 'react-icons/bi';
+import { BiCalendarAlt, BiFolder, BiCommentDetail } from "react-icons/bi";
+import toBase64String from "../../../utils/toBase64String";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const months = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "Sept",
+  "October",
+  "Nov",
+  "Dec",
+];
 
 const LayoutA = (props) => {
+  const categories = useSelector((state) => state.essential.categories);
+  const category = categories.find((item) => item.id === props.data.category);
+  const date = new Date(props.data.published);
   return (
     <div className={classes.blogDiv}>
       <div className={classes.blogImg}>
-        <img src={props.image_url} alt="" />
+        <img
+          src={`data:${props.data.image.contentType};base64,${toBase64String(
+            props.data.image.data.data
+          )}`}
+          alt={props.data.title}
+        />
       </div>
       <div className={classes.blogDetails}>
         <h2>
-          <a href="hello"> Loving Heart is the Truest Wisdom</a>
+          <Link to={`/blog/${props.data._id}`}>
+            {props.data.title.substring(0, 40) + "..."}
+          </Link>
         </h2>
         <div className={classes.blogMeta}>
           <div>
-            <span><BiCalendarAlt/></span> June 29, 2019
+            <span>
+              <BiCalendarAlt />
+            </span>{" "}
+            {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}
           </div>
           <div className={classes.tagMeta}>
-            <a href="hello">
-              <span><BiFolder/></span> Travel
-            </a>
+            <Link to={`${category.href}`}>
+              <span>
+                <BiFolder />
+              </span>{" "}
+              {category.item}
+            </Link>
           </div>
           <div>
-            <span><BiCommentDetail/></span> 5 Comments
+            <span>
+              <BiCommentDetail />
+            </span>{" "}
+            {props.data.comments.length} Comments
           </div>
         </div>
         <p className={classes.blogText}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ratione
-          suscipit necessitatibus nisi, repudiand.
+          {props.data.content.substring(0, 100) + "..."}
         </p>
         <p className={classes.readMore}>
-          <a href="##"> Read More {">"}</a>
+          <Link to={`/blog/${props.data._id}`}> Read More {">"}</Link>
         </p>
       </div>
     </div>

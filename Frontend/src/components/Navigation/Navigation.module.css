@@ -21,6 +21,7 @@
   list-style: none;
   font-size: 1.8rem;
   line-height: 2.3;
+  text-transform: capitalize;
   font-weight: 500;
   width: 100%;
 }

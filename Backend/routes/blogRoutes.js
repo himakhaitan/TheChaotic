@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const Blog = require("../models/Blog");
 const Author = require("../models/Author");
 const Category = require("../models/Category");
+const { json } = require("body-parser");
 
 /*
 Method  : POST
@@ -185,7 +186,7 @@ router.get("/category/:id", async (req, res) => {
 Method  : GET
 Route   : /blog/author/:id
 Access  : Public
-Func    : Fetch All Blogs of a Category
+Func    : Fetch All Blogs of an Author
 */
 router.get("/author/:id", async (req, res) => {
   const id = req.params.id;
@@ -212,4 +213,35 @@ router.get("/author/:id", async (req, res) => {
     blogs,
   });
 });
+
+/*
+Method  : GET
+Route   : /blog/home
+Access  : Public
+Func    : Create New Blog
+*/
+router.get("/home", async (req, res) => {
+  const blogs = await Blog.find(
+    {},
+    ["title", "content", "image", "category", "likes", "comments", "published"],
+    {
+      limit: 10,
+      sort: {
+        published: -1,
+      },
+    }
+  );
+  if (!blogs) {
+    return res.json({
+      success: false,
+      message: "Blogs Found!",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Blogs Found!",
+    blogs,
+  });
+});
+
 module.exports = router;

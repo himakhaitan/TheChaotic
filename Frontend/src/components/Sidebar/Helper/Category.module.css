@@ -23,6 +23,7 @@
   color: #202020;
   grid-template-columns: 1fr max-content;
 }
+
 .categoryGrp > li:not(:last-child) {
   border-bottom: 1px solid #dee2e6;
 }
