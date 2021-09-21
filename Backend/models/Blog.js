@@ -28,7 +28,7 @@ const BlogSchema = new Schema({
   },
   published: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   category: {
     type: Schema.Types.ObjectId,

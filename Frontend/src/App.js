@@ -9,8 +9,7 @@ import { updateCategories } from "./store/slice/essential";
 
 // Pages
 import Home from "./pages/Home/Home";
-import CategoryA from "./pages/CategoryA/CategoryA";
-import CategoryB from "./pages/CategoryB/CategoryB";
+import Category from "./pages/Category/Category";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 
@@ -31,8 +30,9 @@ function App() {
       <Suspense>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/technology" component={CategoryA} exact />
-          <Route path="/money" component={CategoryB} exact />
+          {/* <Route path="/technology" component={CategoryA} exact /> */}
+          {/* <Route path="/money" component={CategoryB} exact /> */}
+          <Route path="/category/:id" component={Category} exact />
           <Route path="/about" component={About} exact />
           <Route path="/contact" component={Contact} exact />
         </Switch>

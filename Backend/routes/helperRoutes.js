@@ -150,6 +150,7 @@ router.get("/category/all", async (req, res) => {
     message: "Categories Found!",
     categories: categories.map((item) => {
       return {
+        id: item.id,
         name: item.name,
         count: 12,
       };

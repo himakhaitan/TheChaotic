@@ -63,7 +63,7 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
     content: req.body.content,
     image: {
       data: fs.readFileSync("uploads\\" + req.file.filename),
-      contentTyps: req.file.mimetype,
+      contentType: req.file.mimetype,
     },
     author: mongoose.Types.ObjectId(req.body.author),
     likes: 0,
@@ -166,9 +166,7 @@ router.get("/category/:id", async (req, res) => {
     });
   }
 
-  const blogs = await Blog.find({ category: id })
-    .populate("category.name")
-    .populate("author.name");
+  const blogs = await Blog.find({ category: id }).populate("author");
   if (!blogs || blogs.length === 0) {
     return res.json({
       success: false,

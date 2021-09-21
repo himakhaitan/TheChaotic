@@ -1,6 +1,6 @@
-import TwoColUI from "../../components/UI/Structure/TwoColUI";
-import LayoutA from "../../components/UI/LayoutA/LayoutA";
-import Pagination from "../../components/UI/Pagination/Pagination";
+import TwoColUI from "../../../components/UI/Structure/TwoColUI";
+import LayoutA from "../../../components/UI/LayoutA/LayoutA";
+import Pagination from "../../../components/UI/Pagination/Pagination";
 
 const CategoryA = () => {
   return (

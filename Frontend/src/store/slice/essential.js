@@ -36,7 +36,7 @@ export const updateCategories = () => {
           response.data.categories.map((item) => {
             return {
               count: item.count,
-              href: `/category/${item.name}`,
+              href: `/category/${item.id}`,
               item: item.name,
             };
           })

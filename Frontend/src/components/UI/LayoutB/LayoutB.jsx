@@ -2,42 +2,62 @@ import React from "react";
 import classes from "./LayoutB.module.css";
 import { BsHeartFill, BsEye } from "react-icons/bs";
 import { BiCommentDots } from "react-icons/bi";
-
+import { Link } from "react-router-dom";
+import toBase64String from "../../../utils/toBase64String";
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 const LayoutB = (props) => {
-  return (
+  const date = new Date(props.data.published);
+   return (
     <div className={classes.blogCont}>
       <img
-        src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg"
-        alt=""
+        src={`data:${props.data.image.contentType};base64,${toBase64String(
+          props.data.image.data.data
+        )}`}
+        alt={props.data.title}
       />
       <h3>
-        <a href="###">A Loving Heart is the Truest Wisdom</a>
+        <Link to={`/blog/${props.data._id}`}>{props.data.title}</Link>
       </h3>
-      <p className={classes.blogTextContent}>
-        Even the all-powerful Pointing has no control about the blind texts it
-        is an almost unorthographic life One day however a small line of blind
-        text by the name of Lorem Ipsum decided to leave for the far World of
-        Grammar.
-      </p>
+      <p className={classes.blogTextContent}>{props.data.content}</p>
       <div className={classes.writter}>
         <img
-          src="https://cdn.pixabay.com/photo/2015/03/26/09/40/suit-690048_1280.jpg"
-          alt=""
+          src={`data:${
+            props.data.author.profilePhoto.contentType
+          };base64,${toBase64String(
+            props.data.image.data.data
+          )}`}
+          alt={props.data.author.name}
         />
         <div className={classes.writterStats}>
           <p>Written By</p>
           <h5>
-            <span>Himanshu Khaitan</span>, June 28, 2019
+            <span>{props.data.author.name}</span>, {months[date.getMonth()]}{" "}
+            {date.getDate()}, {date.getFullYear()}
           </h5>
         </div>
       </div>
       <div className={classes.blogUtils}>
-        <button>Continue Reading</button>
+        <button>
+          <Link to={`/blog/${props.data._id}`}>Continue Reading</Link>
+        </button>
         <div className={classes.insight}>
           <p className={classes.icon}>
             <BsHeartFill />
           </p>
-          <p>3</p>
+          <p>{props.data.likes}</p>
           <p className={classes.icon}>
             <BsEye />
           </p>
@@ -45,7 +65,7 @@ const LayoutB = (props) => {
           <p className={classes.icon}>
             <BiCommentDots />
           </p>
-          <p>5</p>
+          <p>{props.data.comments.length}</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Category.module.css";
+import { Link } from "react-router-dom";
 export default function Category(props) {
   return (
     <div className={classes.sidegrp}>
@@ -8,7 +9,7 @@ export default function Category(props) {
         {props.data.map((element, index) => {
           return (
             <li key={index}>
-              <a href={element.href}>{element.item}</a>
+              <Link to={element.href}>{element.item}</Link>
               <p>({element.count})</p>
             </li>
           );
