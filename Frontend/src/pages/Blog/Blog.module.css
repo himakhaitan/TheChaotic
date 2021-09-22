@@ -1,0 +1,117 @@
+.blogCont {
+  width: 100%;
+  margin-top: 4rem;
+  padding: 2rem 5rem;
+}
+.blogImg {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
+.blogTitle {
+  color: #000;
+  transition: all 0.3s;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 3rem;
+  line-height: 1.5;
+  margin: 2rem 0 3rem 0;
+  font-family: "Lora", Arial, sans-serif;
+}
+.insight {
+  justify-self: right;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.insight > div > p {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #b3b3b3;
+  text-transform: capitalize;
+}
+.insight > div {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.insight > div > .icon {
+  font-size: 1.5rem;
+}
+.insightBox {
+  display: flex;
+  justify-content: center;
+}
+.category {
+  color: var(--black) !important;
+}
+.blogTextContent {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #666;
+  font-weight: 400;
+  margin-top: 4.7rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.writter {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  grid-template-columns: max-content 1fr;
+}
+.writter > img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+.writterStats > p {
+  font-size: 1.4rem;
+  color: #b3b3b3;
+  line-height: 1.8;
+  font-weight: 400;
+}
+.tags {
+  display: flex;
+  justify-content: center;
+}
+.writterStats > h5 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.writterStats > h5 > span {
+  color: #000;
+  font-weight: 600;
+  font-size: 1.8rem;
+  font-family: "Lora", Arial, sans-serif;
+  text-decoration: underline;
+}
+.writeDiv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+.authorSocial {
+  justify-self: right;
+  align-self: center;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: #666;
+  justify-content: center;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+.authorSocial > * {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.authorSocial > *:hover {
+  color: #000;
+}

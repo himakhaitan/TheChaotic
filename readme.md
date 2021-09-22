@@ -10,7 +10,8 @@
 <a href="https://www.mongodb.com/">
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/mongodb.png" width="100">
 </a>&nbsp;
-<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/redux.png" width="100">
+<a href="">
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/redux.png" width="60">
 </a>&nbsp;
 <a href="https://expressjs.com/">
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/expressjs.png" width="100">

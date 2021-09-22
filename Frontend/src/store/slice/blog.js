@@ -2,11 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import variable from "../../config/variables";
 import { essentialAction } from "./essential";
-// import { essentialAction } from "./essential";
 
 let initialState = {
   byCategory: [],
-  current: {},
   likes: [],
   published: [],
 };
