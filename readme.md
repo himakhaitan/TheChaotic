@@ -10,6 +10,8 @@
 <a href="https://www.mongodb.com/">
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/mongodb.png" width="100">
 </a>&nbsp;
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/redux.png" width="100">
+</a>&nbsp;
 <a href="https://expressjs.com/">
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/expressjs.png" width="100">
 </a>
@@ -44,19 +46,24 @@
 ## Description
 
 ## Screenshot
+
 Below are some of the screenshots of UI from The Chaotic
 
 ### Home Page
+
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot1.png">
 
 ### Contact Page
+
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot2.png">
 
 ### Category Pages
+
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot4.png">
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot5.png">
 
 ### About Pages
+
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot3.png">
 
 ## Installation and Setup
@@ -64,6 +71,7 @@ Below are some of the screenshots of UI from The Chaotic
 ## Dependencies
 
 ## License
+
 This project uses an [MIT](https://opensource.org/licenses/MIT) license.
 
 ## Contribution

@@ -7,7 +7,8 @@ import { essentialAction } from "./essential";
 let initialState = {
   byCategory: [],
   current: {},
-  home: [],
+  likes: [],
+  published: [],
 };
 
 const blogSlice = createSlice({
@@ -24,22 +25,24 @@ const blogSlice = createSlice({
         alert(`Data Already Fetched for ${action.payload.categoryID}`);
       }
     },
-    fetchHome(state, action) {
-      state.home = action.payload;
+    fetchSortBlogs(state, action) {
+      state[`${action.payload[1]}`] = action.payload[0];
     },
   },
 });
 
 export const blogActions = blogSlice.actions;
 
-export const fetchHome = () => {
+export const fetchSortedBlogs = (parameter, limit) => {
   return async (dispatch) => {
     dispatch(essentialAction.toggleSpinner());
-    const response = await axios.get(`${variable.serverURL}/blog/home`);
+    const response = await axios.get(
+      `${variable.serverURL}/blog/${parameter}/${limit}`
+    );
     if (!response.data.success) {
       alert(response.data.message);
     } else {
-      dispatch(blogActions.fetchHome(response.data.blogs));
+      dispatch(blogActions.fetchSortBlogs([response.data.blogs, parameter]));
     }
     dispatch(essentialAction.toggleSpinner());
   };

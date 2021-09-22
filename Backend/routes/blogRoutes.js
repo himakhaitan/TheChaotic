@@ -113,8 +113,7 @@ router.get("/post/:id", async (req, res) => {
       message: "Invalid Blog ID!",
     });
   }
-  const data = await Blog.findOne({ id: id });
-  console.log(data);
+  const data = await Blog.findOne({ id: id }).populate("author");
   if (!data) {
     return res.json({
       success: false,
@@ -216,21 +215,31 @@ router.get("/author/:id", async (req, res) => {
 
 /*
 Method  : GET
-Route   : /blog/home
+Route   : /blog/:sort/:limit
 Access  : Public
-Func    : Create New Blog
+Func    : Get Sorted Blogs According :sort
 */
-router.get("/home", async (req, res) => {
+router.get("/:sort/:limit", async (req, res) => {
+  let { sort, limit } = req.params;
   const blogs = await Blog.find(
     {},
-    ["title", "content", "image", "category", "likes", "comments", "published"],
+    [
+      "title",
+      "content",
+      "image",
+      "category",
+      "likes",
+      "comments",
+      "published",
+      "author",
+    ],
     {
-      limit: 10,
-      sort: {
+      limit: +limit,
+      [sort]: {
         published: -1,
       },
     }
-  );
+  ).populate("author", "name");
   if (!blogs) {
     return res.json({
       success: false,

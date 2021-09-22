@@ -6,7 +6,7 @@ import Pagination from "../../components/UI/Pagination/Pagination";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const home = useSelector((state) => state.blog.home);
+  const home = useSelector((state) => state.blog.published);
   return (
     <ThreeColUI>
       <div className={classes.mainContent}>
