@@ -17,7 +17,7 @@ export default function TagCloud(props) {
         {props.array &&
           props.array.map((element, index) => {
             return (
-              <Link key={index} to={`/tag/${element}`}>
+              <Link key={index} to={`/tags/${element}`}>
                 <p>{element}</p>
               </Link>
             );

@@ -215,6 +215,29 @@ router.get("/author/:id", async (req, res) => {
 
 /*
 Method  : GET
+Route   : /blog/tags/:tag
+Access  : Public
+Func    : Fetch Blogs through Tag
+*/
+
+router.get("/tags/:tag", async (req, res) => {
+  let tag = req.params.tag;
+  const blogs = await Blog.find({ tags: { $in: [`${tag}`] } });
+  if (!blogs || blogs.length == 0) {
+    return res.json({
+      success: false,
+      message: "No Blogs Found!",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Blogs Found!",
+    blogs,
+  });
+});
+
+/*
+Method  : GET
 Route   : /blog/:sort/:limit
 Access  : Public
 Func    : Get Sorted Blogs According :sort
@@ -235,8 +258,8 @@ router.get("/:sort/:limit", async (req, res) => {
     ],
     {
       limit: +limit,
-      [sort]: {
-        published: -1,
+      sort: {
+        [sort]: -1,
       },
     }
   ).populate("author", "name");
