@@ -101,6 +101,35 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
 
 /*
 Method  : GET
+Route   : /blog/post/:id
+Access  : Public
+Func    : Fetch Blog using ID
+*/
+router.get("/post/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+  const data = await Blog.findOne({ _id: id }).populate("author");
+  if (!data) {
+    return res.json({
+      success: false,
+      message: "No blog Available!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Blog Found!",
+    blog: data,
+  });
+});
+
+/*
+Method  : GET
 Route   : /blog/post/:id/like
 Access  : Public
 Func    : Like Blog with ID
@@ -158,35 +187,6 @@ router.get("/post/:id/like", async (req, res) => {
     success: true,
     message: "Blog Unliked!",
     blogID: blogSave.id,
-  });
-});
-
-/*
-Method  : GET
-Route   : /blog/post/:id
-Access  : Public
-Func    : Fetch Blog using ID
-*/
-router.get("/post/:id", async (req, res) => {
-  const id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.json({
-      success: false,
-      message: "Invalid Blog ID!",
-    });
-  }
-  const data = await Blog.findOne({ id: id }).populate("author");
-  if (!data) {
-    return res.json({
-      success: false,
-      message: "No blog Available!",
-    });
-  }
-
-  return res.json({
-    success: true,
-    message: "Blog Found!",
-    blog: data,
   });
 });
 

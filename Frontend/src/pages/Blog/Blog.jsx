@@ -8,7 +8,7 @@ import Helper from "./Helper";
 
 const Blog = () => {
   const [data, setData] = useState(null);
-  const { blogID } = useParams();
+  let { blogID } = useParams();
   useEffect(() => {
     const fetching = async () => {
       const response = await axios.get(
@@ -25,8 +25,8 @@ const Blog = () => {
 
   return (
     <Fragment>
-      {data && <Helper data={data} />}
       {!data && <Spinner />}
+      {data && <Helper data={data} />}
     </Fragment>
   );
 };
