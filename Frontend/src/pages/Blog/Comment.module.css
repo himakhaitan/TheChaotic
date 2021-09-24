@@ -1,0 +1,86 @@
+/* Comment Section */
+
+.commentTitle {
+  margin-top: 3rem;
+  color: #000;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 1.5;
+  font-family: "Lora", Arial, sans-serif;
+  position: relative;
+}
+
+.comment {
+  margin: 0 2rem;
+  padding: 1rem 1.5rem;
+  border: 1.5px solid var(--blue);
+  border-radius: 10px;
+  margin-bottom: 1.7rem;
+  position: relative;
+}
+
+.comment > p:first-child {
+  font-family: "Lora", Arial, sans-serif;
+  font-size: 1.3rem;
+  padding-bottom: 0.55rem;
+  width: 65%;
+  color: #000;
+  border-bottom: 1px solid rgb(153, 153, 153);
+  font-weight: 500;
+}
+.commentIn {
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr max-content;
+}
+.comment > p:last-child {
+  padding-top: 0.4rem;
+  font-size: 1.3rem;
+}
+.commentInput {
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--blue);
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+.commentInput:focus,
+.commentInput:active,
+.commentInput:focus-visible {
+  border: 1.5px solid var(--blue);
+}
+
+.commentInput::placeholder {
+  font-family: "Lora", Arial, sans-serif;
+  font-size: 1.3rem;
+}
+
+.submit {
+  grid-column: 2/-1;
+  font-size: 1.6rem;
+  display: flex;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1/2;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit:hover {
+  transform: scale(1.2);
+}
+
+.line {
+  height: 0.15rem;
+  width: 20rem;
+  border-radius: 10px;
+  background-color: rgb(112, 111, 111);
+  margin: 3rem auto 2rem;
+}

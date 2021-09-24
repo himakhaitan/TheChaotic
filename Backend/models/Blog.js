@@ -50,9 +50,6 @@ const BlogSchema = new Schema({
         type: String,
         required: true,
       },
-      likes: {
-        type: Number,
-      },
       date: {
         type: Date,
         default: Date.now,

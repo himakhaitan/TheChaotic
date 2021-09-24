@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import toBase64String from "../../utils/toBase64String";
 import { BsHeartFill } from "react-icons/bs";
 import { BiCommentDots, BiCalendarAlt } from "react-icons/bi";
+import Comment from "./Comment";
 import {
   FaRegFolder,
   FaInstagram,
@@ -96,9 +97,10 @@ const Helper = (props) => {
         </div>
         <p className={classes.blogTextContent}>{data.content}</p>
         <div className={classes.tags}>
-          {" "}
           <Tagcloud array={data.tags} />
         </div>
+        {/* Comment Section */}
+        <Comment data={data.comments} blogID={data._id} />
         <div className={classes.writeDiv}>
           <div className={classes.writter}>
             <img

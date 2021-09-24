@@ -3,12 +3,64 @@ const fs = require("fs");
 const router = require("express").Router();
 const blogValidator = require("../validation/blogValidator");
 const mongoose = require("mongoose");
+const commentValidator = require("../validation/commentValidator");
+const superheros = require("superheroes");
 
 // Models
+
 const Blog = require("../models/Blog");
 const Author = require("../models/Author");
 const Category = require("../models/Category");
 const { json } = require("body-parser");
+
+/*
+Method  : POST
+Route   : /blog/post/comment/:id
+Access  : Public
+Func    : POST comment on a Blog
+*/
+router.post("/post/comment/:id", async (req, res) => {
+  let { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+  const { errors, isValid } = commentValidator(req.body);
+  if (!isValid) {
+    return res.json({
+      success: false,
+      message: errors.comment,
+    });
+  }
+  const blog = await Blog.findById(id);
+  if (!blog) {
+    return res.json({
+      success: false,
+      message: "Blog Not Found!",
+    });
+  }
+  superheros.all;
+  const data = {
+    author: superheros.random(),
+    text: req.body.comment,
+  };
+  blog.comments.push(data);
+
+  const savedBlog = await blog.save();
+  if (!savedBlog) {
+    return res.json({
+      success: false,
+      message: "Internal Server Error!",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Comment Made!",
+    comments: savedBlog.comments,
+  });
+});
 
 /*
 Method  : POST
