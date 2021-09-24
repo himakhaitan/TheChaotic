@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Navigation.module.css";
 import Logo from "../UI/Logo/Logo";
 import validator from "validator";
 import { BiNavigation } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import newsletterRegister from "../../utils/newsletter";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
+  const [navData, setNavData] = useState([]);
+  const categories = useSelector((state) => state.essential.categories);
+  useEffect(() => {
+    if (categories.length !== 0) {
+      setNavData(categories);
+    }
+  }, [categories]);
   const [email, setEmail] = useState("");
   const [errorState, setErrorState] = useState({
     success: true,
@@ -50,16 +58,28 @@ const Navigation = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink activeClassName={classes.active} exact to="/technology">
-              Technology
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName={classes.active} exact to="/money">
-              Money
-            </NavLink>
-          </li>
+          {navData.length !== 0 && (
+            <li>
+              <NavLink
+                activeClassName={classes.active}
+                exact
+                to={navData.find((data) => data.item === "technology").href}
+              >
+                Technology
+              </NavLink>
+            </li>
+          )}
+          {navData.length !== 0 && (
+            <li>
+              <NavLink
+                activeClassName={classes.active}
+                exact
+                to={navData.find((data) => data.item === "money").href}
+              >
+                Money
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink activeClassName={classes.active} exact to="/about">
               About
