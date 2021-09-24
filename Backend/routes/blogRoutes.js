@@ -222,7 +222,10 @@ Func    : Fetch Blogs through Tag
 
 router.get("/tags/:tag", async (req, res) => {
   let tag = req.params.tag;
-  const blogs = await Blog.find({ tags: { $in: [`${tag}`] } });
+  tag = tag.toLowerCase();
+  const blogs = await Blog.find({ tags: { $in: [`${tag}`] } }).populate(
+    "author"
+  );
   if (!blogs || blogs.length == 0) {
     return res.json({
       success: false,
