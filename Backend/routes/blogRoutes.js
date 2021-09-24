@@ -101,6 +101,68 @@ router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
 
 /*
 Method  : GET
+Route   : /blog/post/:id/like
+Access  : Public
+Func    : Like Blog with ID
+*/
+
+router.get("/post/:id/like", async (req, res) => {
+  let { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+  let blog = await Blog.findById(id);
+  blog.likes = +blog.likes + 1;
+  let blogSave = await blog.save();
+  if (!blogSave) {
+    return res.json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Blog Liked!",
+    blogID: blogSave.id,
+  });
+});
+
+/*
+Method  : GET
+Route   : /blog/post/:id/like
+Access  : Public
+Func    : Like Blog with ID
+*/
+
+router.get("/post/:id/like", async (req, res) => {
+  let { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+  let blog = await Blog.findById(id);
+  blog.likes = +blog.likes - 1;
+  let blogSave = await blog.save();
+  if (!blogSave) {
+    return res.json({
+      success: false,
+      message: "Internal Server Error",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Blog Unliked!",
+    blogID: blogSave.id,
+  });
+});
+
+/*
+Method  : GET
 Route   : /blog/post/:id
 Access  : Public
 Func    : Fetch Blog using ID

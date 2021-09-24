@@ -1,6 +1,6 @@
 import ThreeColUI from "../../components/UI/Structure/ThreeColUI";
 import classes from "./Blog.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import toBase64String from "../../utils/toBase64String";
 import { BsHeartFill } from "react-icons/bs";
 import { BiCommentDots, BiCalendarAlt } from "react-icons/bi";
@@ -11,7 +11,8 @@ import {
   FaGithub,
   FaFacebookF,
 } from "react-icons/fa";
-
+import { likeAndUnlikeBlog } from "../../store/slice/essential";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Tagcloud from "../../components/Sidebar/Helper/TagCloud";
 const months = [
@@ -29,10 +30,23 @@ const months = [
   "Dec",
 ];
 const Helper = (props) => {
+  const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
   let data = props.data;
   const categories = useSelector((state) => state.essential.categories);
   let date = new Date(data.published);
   let cate = categories.find((item) => item.id === data.category);
+  const likedFunc = () => {
+    if (!liked) {
+      dispatch(likeAndUnlikeBlog(data._id, true));
+      data.likes++;
+      setLiked(true);
+    } else {
+      dispatch(likeAndUnlikeBlog(data._id, false));
+      data.likes--;
+      setLiked(false);
+    }
+  };
   return (
     <ThreeColUI>
       <div className={classes.blogCont}>
@@ -55,8 +69,8 @@ const Helper = (props) => {
               </p>
             </div>
             <div>
-              <p className={classes.icon}>
-                <BsHeartFill />
+              <p className={`${classes.icon} ${liked && classes.liked}`}>
+                <BsHeartFill onClick={likedFunc} className={classes.likeIcon} />
               </p>
               <p>{data.likes + " Likes"}</p>
             </div>

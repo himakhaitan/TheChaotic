@@ -95,3 +95,9 @@
   font-family: "Lora", Arial, sans-serif;
   text-decoration: underline;
 }
+.liked {
+  color: var(--error) !important;
+}
+.likeIcon {
+  cursor: pointer;
+}

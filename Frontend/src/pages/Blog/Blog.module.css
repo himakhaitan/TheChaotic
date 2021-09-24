@@ -115,3 +115,10 @@
 .authorSocial > *:hover {
   color: #000;
 }
+
+.liked {
+  color: var(--error) !important;
+}
+.likeIcon {
+  cursor: pointer;
+}

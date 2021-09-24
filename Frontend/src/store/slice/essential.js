@@ -22,6 +22,17 @@ const essentialSlice = createSlice({
 
 export const essentialAction = essentialSlice.actions;
 
+export const likeAndUnlikeBlog = (id, boolean) => {
+  return async (dispatch) => {
+    const response = await axios.get(
+      `${variable.serverURL}/blog/post/${id}/${boolean ? "like" : "unlike"}`
+    );
+    if (!response.data.success) {
+      alert(response.data.message);
+    }
+  };
+};
+
 export const updateCategories = () => {
   return async (dispatch) => {
     dispatch(essentialAction.toggleSpinner());
@@ -38,7 +49,7 @@ export const updateCategories = () => {
               count: item.count,
               href: `/category/${item.id}`,
               item: item.name,
-              id: item.id
+              id: item.id,
             };
           })
         )

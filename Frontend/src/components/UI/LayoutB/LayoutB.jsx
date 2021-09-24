@@ -1,4 +1,7 @@
 import React from "react";
+import { useState } from "react";
+import { likeAndUnlikeBlog } from "../../../store/slice/essential";
+import { useDispatch } from "react-redux";
 import classes from "./LayoutB.module.css";
 import { BsHeartFill, BsEye } from "react-icons/bs";
 import { BiCommentDots } from "react-icons/bi";
@@ -19,8 +22,19 @@ const months = [
   "December",
 ];
 const LayoutB = (props) => {
+  const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
   const date = new Date(props.data.published);
-   return (
+  const likedFunc = () => {
+    if (!liked) {
+      dispatch(likeAndUnlikeBlog(props.data._id, true));
+      setLiked(true);
+    } else {
+      dispatch(likeAndUnlikeBlog(props.data._id, false));
+      setLiked(false);
+    }
+  };
+  return (
     <div className={classes.blogCont}>
       <img
         src={`data:${props.data.image.contentType};base64,${toBase64String(
@@ -36,9 +50,7 @@ const LayoutB = (props) => {
         <img
           src={`data:${
             props.data.author.profilePhoto.contentType
-          };base64,${toBase64String(
-            props.data.image.data.data
-          )}`}
+          };base64,${toBase64String(props.data.image.data.data)}`}
           alt={props.data.author.name}
         />
         <div className={classes.writterStats}>
@@ -54,10 +66,13 @@ const LayoutB = (props) => {
           <Link to={`/blog/${props.data._id}`}>Continue Reading</Link>
         </button>
         <div className={classes.insight}>
-          <p className={classes.icon}>
-            <BsHeartFill />
+          <p className={`${classes.icon} ${liked && classes.liked}`}>
+            <BsHeartFill onClick={likedFunc} className={classes.likeIcon} />
           </p>
-          <p>{props.data.likes}</p>
+          <p>
+            {liked && props.data.likes + 1}
+            {!liked && props.data.likes}
+          </p>
           <p className={classes.icon}>
             <BsEye />
           </p>
