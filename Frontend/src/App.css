@@ -10,19 +10,42 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
+@media screen and (max-width: 160em) and (min-width: 140em) {
+  html {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 139.9em) and (min-width: 130em) {
+  html {
+    font-size: 105%;
+  }
+}
+@media screen and (max-width: 129.9em) and (min-width: 125em) {
+  html {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 124.9em) and (min-width: 115em) {
+  html {
+    font-size: 90%;
+  }
+}
+@media screen and (max-width: 114.9em) and (min-width: 100em) {
+  html {
+    font-size: 80%;
+  }
+}
+@media screen and (max-width: 99.9em) and (min-width: 89em) {
+  html {
+    font-size: 70%;
+  }
+}
 
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
 }
-
-@media only screen and (max-width: 160em) {
-  html {
-    font-size: 110%;
-  }
-}
-
 a,
 a:visited,
 a:link {
