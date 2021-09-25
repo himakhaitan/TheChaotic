@@ -17,6 +17,12 @@ body {
   color: rgba(0, 0, 0, 0.7);
 }
 
+@media only screen and (max-width: 160em) {
+  html {
+    font-size: 110%;
+  }
+}
+
 a,
 a:visited,
 a:link {
