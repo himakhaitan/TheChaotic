@@ -62,3 +62,13 @@
   justify-content: center;
   gap: 1rem;
 }
+@media screen and (max-width: 50em) {
+  .articleHead {
+    font-size: 1.36rem;
+    line-height: 1.5;
+  }
+  .articleMeta {
+    margin-top: 0.8rem;
+    gap: 0.6rem;
+  }
+}

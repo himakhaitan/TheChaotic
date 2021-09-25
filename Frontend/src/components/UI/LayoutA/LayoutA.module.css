@@ -56,3 +56,8 @@
   font-size: 1.5rem;
   color: var(--blue);
 }
+@media screen and (max-width: 50em) {
+  .blogDetails > h2 {
+    font-size: 2.7rem;
+  }
+}

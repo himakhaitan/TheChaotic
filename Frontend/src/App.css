@@ -10,6 +10,29 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.7);
+}
+a,
+a:visited,
+a:link {
+  color: inherit;
+}
+/* Layout Configuration */
+.home {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  width: 100%;
+  overflow-y: hidden;
+  scrollbar-width: 0;
+  height: 100vh;
+}
+
+/* 4K | Laptop L */
+
 @media screen and (max-width: 160em) and (min-width: 140em) {
   html {
     font-size: 110%;
@@ -35,33 +58,21 @@ html {
     font-size: 80%;
   }
 }
-@media screen and (max-width: 99.9em) and (min-width: 89em) {
+@media screen and (max-width: 99.9em) and (min-width: 90em) {
   html {
     font-size: 70%;
   }
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.7);
+/* Tablet | Mobile L | Mobile M | Mobile S */
+
+@media screen and (max-width: 65em){
+  html {
+    font-size: 50%;
+  }
 }
-a,
-a:visited,
-a:link {
-  color: inherit;
-}
-/* Layout Configuration */
-.home {
-  display: grid;
-  grid-template-columns: 25% 1fr;
-  width: 100%;
-  overflow-y: hidden;
-  scrollbar-width: 0;
-  height: 100vh;
-}
-.main {
-  display: grid;
-  overflow-y: scroll;
-  grid-template-columns: 1fr 35%;
+@media screen and (max-width: 50em){
+  html {
+    font-size: 40%;
+  }
 }

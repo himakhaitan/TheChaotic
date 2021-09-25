@@ -108,3 +108,29 @@
   border: 2px solid rgba(255, 255, 255, 0.5);
   cursor: auto;
 }
+
+/* 4K | Laptop L */
+
+@media screen and (max-width: 160em) and (min-width: 140em) {
+  .mainRight {
+    margin-top: 9.5rem;
+  }
+}
+@media screen and (max-width: 92em) and (min-width: 88em) {
+  .mainRight {
+    margin-top: 6.3rem;
+  }
+}
+@media screen and (max-width: 87.9em) and (min-width: 77em) {
+  .mainRight {
+    margin-top: 14rem;
+  }
+}
+
+/* Tablet | Mobile L | Mobile M | Mobile S */
+
+@media screen and (max-width: 67em) {
+  .mainRight {
+    margin-top: 14rem;
+  }
+}

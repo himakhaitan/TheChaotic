@@ -140,3 +140,8 @@
   margin-left: 1rem;
   color: var(--error);
 }
+@media screen and (max-width: 50em) {
+  .searchgrp {
+    display: none;
+  }
+}
