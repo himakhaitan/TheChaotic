@@ -393,4 +393,32 @@ router.get("/:sort/:limit", async (req, res) => {
   });
 });
 
+/*
+Method  : GET
+Route   : /blog/:year/:month/all
+Access  : Public
+Func    : Fetch All Blogs according to duration
+*/
+
+router.get("/:year/:month/all", async (req, res) => {
+  let { year, month } = req.params;
+  const blogs = await Blog.find({
+    published: {
+      $gte: new Date(+year, +month, 31),
+      $lte: new Date(+year, +month, 0),
+    },
+  });
+  if(!blogs || blogs.length == 0) {
+    return res.json({
+      success: false,
+      message: "No blogs Found!"
+    })
+  }
+  res.json({
+    success: true,
+    message: "Blogs Found",
+    blogs,
+  });
+});
+
 module.exports = router;
