@@ -4,8 +4,8 @@
   grid-template-columns: 1fr 35%;
 }
 
-@media only screen and (max-width: 56.25em) {
+@media only screen and (max-width: 55em) {
   .main {
-    
+    grid-template-columns: 1fr 28%;
   }
 }

@@ -66,13 +66,19 @@ a:link {
 
 /* Tablet | Mobile L | Mobile M | Mobile S */
 
-@media screen and (max-width: 65em){
+@media screen and (max-width: 65em) {
   html {
     font-size: 50%;
   }
 }
-@media screen and (max-width: 50em){
+@media screen and (max-width: 55em) {
   html {
     font-size: 40%;
+  }
+  .home {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content 1fr;
+    overflow-y: scroll;
+    height: auto;
   }
 }

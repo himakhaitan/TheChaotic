@@ -7,8 +7,8 @@ const CategoryB = (props) => {
   return (
     <ThreeColUI>
       <div className={classes.mainContent}>
-        {props.data.map((element) => {
-          return <LayoutB data={element} />;
+        {props.data.map((element, index) => {
+          return <LayoutB key={index} data={element} />;
         })}
         <Pagination />
       </div>

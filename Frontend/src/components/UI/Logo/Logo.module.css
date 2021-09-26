@@ -14,8 +14,12 @@
 
   /* https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 */
 }
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 55em) {
   .logoSpan {
     font-size: 6.3rem;
+  }
+  .logoLink {
+    display: flex;
+    gap: 2rem;
   }
 }
