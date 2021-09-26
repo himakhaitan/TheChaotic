@@ -71,9 +71,21 @@ a:link {
     font-size: 50%;
   }
 }
+@media screen and (max-width: 70em) and (orientation: portrait) {
+  .home {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content 1fr;
+    overflow-y: scroll;
+    height: auto;
+  }
+  html {
+    font-size: 70%;
+  }
+}
+
 @media screen and (max-width: 55em) {
   html {
-    font-size: 40%;
+    font-size: 50%;
   }
   .home {
     grid-template-columns: 100%;
