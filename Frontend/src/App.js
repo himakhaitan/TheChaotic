@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation";
 import { Suspense } from "react";
@@ -10,14 +11,16 @@ import { fetchSortedBlogs } from "./store/slice/blog";
 
 // Pages
 import Home from "./pages/Home/Home";
-import Category from "./pages/Category/Category";
-import About from "./pages/About/About";
-import Contact from "./pages/Contact/Contact";
-import Blog from "./pages/Blog/Blog";
-import Tag from "./pages/Tags/Tag";
 
 // Components
 import Spinner from "./components/UI/Spinner/Spinner";
+
+// Lazy Loading
+const Category = React.lazy(() => import("./pages/Category/Category"));
+const Contact = React.lazy(() => import("./pages/Contact/Contact"));
+const Tag = React.lazy(() => import("./pages/Tags/Tag"));
+const Blog = React.lazy(() => import("./pages/Blog/Blog"));
+const About = React.lazy(() => import("./pages/About/About"));
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +35,7 @@ function App() {
   return (
     <div className="home">
       <Navigation />
-      <Suspense>
+      <Suspense fallback={Spinner}>
         <Switch>
           <Route path="/" component={Home} exact />
           {/* <Route path="/technology" component={CategoryA} exact /> */}
