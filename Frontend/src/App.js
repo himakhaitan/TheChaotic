@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateCategories } from "./store/slice/essential";
 import { fetchSortedBlogs } from "./store/slice/blog";
-
+import PrivateRoute from "./routing/PrivateRoute";
 // Pages
 import Home from "./pages/Home/Home";
 
@@ -44,7 +44,7 @@ function App() {
           <Route path="/tags/:tag" component={Tag} exact />
           <Route path="/blog/:blogID" component={Blog} exact />
           <Route path="/about" component={About} exact />
-          <Route path="/contact" component={Contact} exact />
+          <PrivateRoute path="/contact" component={Contact} exact />
         </Switch>
       </Suspense>
       {isLoading && <Spinner />}
