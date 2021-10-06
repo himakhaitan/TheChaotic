@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { updateCategories } from "./store/slice/essential";
 import { fetchSortedBlogs } from "./store/slice/blog";
 import PrivateRoute from "./routing/PrivateRoute";
+import PublicRoute from "./routing/PublicRoute";
+
 // Pages
 import Home from "./pages/Home/Home";
 
@@ -21,6 +23,8 @@ const Contact = React.lazy(() => import("./pages/Contact/Contact"));
 const Tag = React.lazy(() => import("./pages/Tags/Tag"));
 const Blog = React.lazy(() => import("./pages/Blog/Blog"));
 const About = React.lazy(() => import("./pages/About/About"));
+const AdminLogin = React.lazy(() => import("./pages/AdminLogin/AdminLogin"));
+const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +48,9 @@ function App() {
           <Route path="/tags/:tag" component={Tag} exact />
           <Route path="/blog/:blogID" component={Blog} exact />
           <Route path="/about" component={About} exact />
-          <PrivateRoute path="/contact" component={Contact} exact />
+          <Route path="/contact" component={Contact} exact />
+          <PublicRoute path="/admin/login" component={AdminLogin} exact />
+          <PrivateRoute path="/admin/dashboard" component={Dashboard} exact />
         </Switch>
       </Suspense>
       {isLoading && <Spinner />}
