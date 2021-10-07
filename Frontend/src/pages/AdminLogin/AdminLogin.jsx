@@ -14,7 +14,6 @@ const Admin = () => {
           <span className={classes.headSpan}>Let's</span>
           <span className={classes.headSpan}>Get Started</span>
         </div>
-        {/* <div className={classes.line}></div> */}
         <div className={classes.inputGrp}>
           <div className={classes.icon}>
             <FaUserCircle />

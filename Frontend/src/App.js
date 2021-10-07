@@ -25,6 +25,7 @@ const Blog = React.lazy(() => import("./pages/Blog/Blog"));
 const About = React.lazy(() => import("./pages/About/About"));
 const AdminLogin = React.lazy(() => import("./pages/AdminLogin/AdminLogin"));
 const Dashboard = React.lazy(() => import("./pages/Dashboard/Dashboard"));
+const page404 = React.lazy(() => import("./pages/404/404"));
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
           <Route path="/contact" component={Contact} exact />
           <PublicRoute path="/admin/login" component={AdminLogin} exact />
           <PrivateRoute path="/admin/dashboard" component={Dashboard} exact />
+          <Route path="*" component={page404} />
         </Switch>
       </Suspense>
       {isLoading && <Spinner />}

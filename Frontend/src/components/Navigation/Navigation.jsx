@@ -3,6 +3,7 @@ import classes from "./Navigation.module.css";
 import Logo from "../UI/Logo/Logo";
 import validator from "validator";
 import { BiNavigation } from "react-icons/bi";
+import { BsFillHeartFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import newsletterRegister from "../../utils/newsletter";
 import { useSelector } from "react-redux";
@@ -117,8 +118,12 @@ const Navigation = () => {
       </div>
       <div className={classes.copyright}>
         <p>
-          Copyright &copy;2021 All rights reserved | Made with 🖤 by
-          <span>Himanshu </span>
+          Copyright &copy;2021 All rights reserved | Made with
+          <span>
+            <BsFillHeartFill className={classes.icon} />
+          </span>
+          by
+          <span> Himanshu </span>
         </p>
       </div>
     </header>
