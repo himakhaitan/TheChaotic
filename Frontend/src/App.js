@@ -51,7 +51,7 @@ function App() {
           <Route path="/about" component={About} exact />
           <Route path="/contact" component={Contact} exact />
           <PublicRoute path="/admin/login" component={AdminLogin} exact />
-          <PrivateRoute path="/admin/dashboard" component={Dashboard} exact />
+          <PrivateRoute path="/admin/dashboard" component={Dashboard} />
           <Route path="*" component={page404} />
         </Switch>
       </Suspense>
