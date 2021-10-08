@@ -173,7 +173,7 @@ const AuthorCreate = () => {
       .post(`${variable.serverURL}/assist/author/create`, formData)
       .then(async (response) => {
         await setResult({
-          status: response.data.success,
+          status: true,
           message: response.data.message,
         });
         resetState();
