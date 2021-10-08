@@ -1,0 +1,93 @@
+.inputGrp {
+  display: grid;
+  grid-template-columns: 20% max-content 1fr;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.inputGrp > p {
+  padding: 0 3rem 0 0;
+  font-weight: 900;
+  font-size: 2rem;
+}
+.inputGrp > label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.simpleInput {
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+  outline: none;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  color: var(--black);
+  border: 1.5px solid var(--black);
+}
+
+.simpleInput::placeholder {
+  color: rgb(136, 136, 136);
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+.mainGrp {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+}
+.mainGrp > input,
+.mainGrp > textarea {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+.mainGrp > .cicon {
+  color: var(--success);
+}
+.mainGrp > .icon {
+  color: var(--error);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+.mainGrp > .icon,
+.mainGrp > .cicon {
+  font-size: 1.5rem;
+  display: flex;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  padding-right: 1rem;
+}
+
+.error {
+  display: none;
+  transition: all 0.3s;
+}
+
+.icon:hover > .error {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100%;
+  font-size: 1rem;
+}
+
+.button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: var(--black);
+  color: var(--white);
+  letter-spacing: 0.1rem;
+  width: 18rem;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  grid-column: 3/-1;
+  justify-self: right;
+}
+.button:disabled {
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  color: var(--black);
+}

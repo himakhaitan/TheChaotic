@@ -20,19 +20,19 @@ const controller = [
   {
     icon: IoCreateOutline,
     heading: "Create Blog",
-    link: "blog/create",
+    link: "blog/new",
     component: BlogCreate,
   },
   {
     icon: BsFillPersonPlusFill,
     heading: "Create Author",
-    link: "author/create",
+    link: "author/new",
     component: AuthorCreate,
   },
   {
     icon: AiOutlineAppstoreAdd,
     heading: "Create Category",
-    link: "category/create",
+    link: "category/new",
     component: CategoryCreate,
   },
   {
@@ -69,12 +69,13 @@ const Dashboard = (props) => {
         </div>
       </div>
       <div className={classes.box}>
-        <Suspense fallback={Spinner}>
+        <Suspense fallback={<Spinner/>}>
           <Switch>
-            {controller.map((item) => {
+            {controller.map((item, index) => {
               return (
-                <Route path={`${url}/${item.link}`} exact>
+                <Route key={index} path={`${url}/${item.link}`} exact>
                   <h2 className={classes.mainHead}>{item.heading}</h2>
+                  <div className={classes.line}></div>
                   <item.component />
                 </Route>
               );

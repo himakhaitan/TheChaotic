@@ -1,6 +1,7 @@
 .main {
-  height: 100vh;
   width: 100%;
+  height: 100vh;
+  position: relative;
 }
 .controller {
   padding: 4rem 3.5rem;
@@ -28,8 +29,9 @@
   margin-top: 1rem;
 }
 .box {
-  overflow-y: auto;
   padding: 3rem 4rem;
+  max-height: 75%;
+  overflow-y: auto;
 }
 .mainHead {
   font-size: 2.2rem;
@@ -40,13 +42,10 @@
   position: relative;
   padding-bottom: 0.6rem;
 }
-.mainHead::after {
-  content: "";
-  position: absolute;
-  bottom: -5%;
-  left: 1.5%;
-  background-color: var(--black);
-  border-radius: 1rem;
-  width: 4rem;
+
+.line {
+  width: 50%;
   height: 2px;
+  background-color: var(--black);
+  border-radius: 5rem;
 }

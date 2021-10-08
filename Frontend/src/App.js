@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="home">
       <Navigation />
-      <Suspense fallback={Spinner}>
+      <Suspense fallback={<Spinner/>}>
         <Switch>
           <Route path="/" component={Home} exact />
           {/* <Route path="/technology" component={CategoryA} exact /> */}
