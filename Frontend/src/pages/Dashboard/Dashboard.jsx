@@ -6,6 +6,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { BiNews } from "react-icons/bi";
+import { TiContacts } from "react-icons/ti";
 
 import { Route, Switch, Link, useRouteMatch } from "react-router-dom";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -15,6 +16,7 @@ const BlogCreate = lazy(() => import("./Helper/BlogCreate"));
 const AuthorCreate = lazy(() => import("./Helper/AuthorCreate"));
 const CategoryCreate = lazy(() => import("./Helper/CategoryCreate"));
 const Newsletter = lazy(() => import("./Helper/Newsletter"));
+const Contact = lazy(() => import("./Helper/Contact"));
 
 const controller = [
   {
@@ -40,6 +42,12 @@ const controller = [
     heading: "Newsletter",
     link: "newsletter",
     component: Newsletter,
+  },
+  {
+    icon: TiContacts,
+    heading: "Contact Response",
+    component: Contact,
+    link: "contact/data",
   },
 ];
 
@@ -69,7 +77,7 @@ const Dashboard = (props) => {
         </div>
       </div>
       <div className={classes.box}>
-        <Suspense fallback={<Spinner/>}>
+        <Suspense fallback={<Spinner />}>
           <Switch>
             {controller.map((item, index) => {
               return (

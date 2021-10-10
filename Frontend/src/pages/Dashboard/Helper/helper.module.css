@@ -21,7 +21,7 @@
   transform: scale(1.1);
 }
 .table {
-  width: 90%;
+  width: 100%;
   font-size: 1.4rem;
   text-align: center;
   border-collapse: collapse;
@@ -59,7 +59,6 @@
 .closeIcon {
   color: var(--error);
   cursor: pointer;
-
   transition: all 0.3s;
 }
 

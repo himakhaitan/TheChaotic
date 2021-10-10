@@ -81,7 +81,7 @@ router.get("/newsletter/all", async (req, res) => {
 /*
 Method  : GET
 Route   : /connect/newsletter/:id
-Func    : Fetch Newsletter Data
+Func    : Fetch Newsletter Data by Id
 Access  : Private
 */
 
@@ -90,7 +90,7 @@ router.get("/newsletter/:id", async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.json({
       success: false,
-      message: "Invalid Blog ID!",
+      message: "Invalid ID!",
     });
   }
 
@@ -162,6 +162,58 @@ router.post("/form/submit", async (req, res) => {
       message: "Internal Server Error!",
     });
   }
+});
+
+/*
+Method  : GET
+Route   : /connect/form/all
+Func    : Fetch Contact Response Data
+Access  : Private
+*/
+
+router.get("/form/all", async (req, res) => {
+  const contact = await Contact.find();
+  if (!contact) {
+    return res.json({
+      success: false,
+      message: "Internal Server Error!",
+    });
+  }
+  return res.json({
+    success: true,
+    contact,
+    message: "Responses Found!",
+  });
+});
+
+/*
+Method  : GET
+Route   : /connect/form/:id
+Func    : Fetch Contact Repsonse by ID
+Access  : Private
+*/
+
+router.get("/form/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid ID!",
+    });
+  }
+
+  const contact = await Contact.findByIdAndDelete(id);
+
+  if (!contact) {
+    return res.json({
+      success: false,
+      message: "No Contact Response Found!",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Contact Deleted",
+  });
 });
 
 module.exports = router;
