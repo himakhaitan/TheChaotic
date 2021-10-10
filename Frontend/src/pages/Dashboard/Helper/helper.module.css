@@ -1,3 +1,72 @@
 .main {
   margin-top: 3rem;
 }
+
+.table,
+.td,
+.th {
+  border: 1px solid var(--black);
+}
+.iconDiv {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+}
+
+.copyIcon {
+  cursor: pointer;
+}
+.copyIcon:hover {
+  transform: scale(1.1);
+}
+.table {
+  width: 90%;
+  font-size: 1.4rem;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.th,
+.td {
+  padding: 0.5rem 0.2rem;
+}
+
+.th {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tdDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0.5rem 5rem;
+}
+
+.tdDiv > p:first-child {
+  justify-self: left;
+}
+
+.td > p > a {
+  color: var(--blue);
+}
+.tdDiv > p:last-child {
+  justify-self: right;
+}
+
+.closeIcon {
+  color: var(--error);
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.closeIcon:hover {
+  transform: scale(1.1);
+}
+
+.null {
+  font-size: 1.4rem;
+}

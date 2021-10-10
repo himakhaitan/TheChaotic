@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const mongoose = require("mongoose");
 const newsletterValidator = require("../validation/newsletterValidator");
 const contactValidator = require("../validation/contactValidator");
 const Newsletter = require("../models/Newsletter");
@@ -56,6 +56,57 @@ router.post("/newsletter/join", async (req, res) => {
   });
 });
 
+/*
+Method  : GET
+Route   : /connect/newsletter/all
+Func    : Fetch Newsletter Data
+Access  : Private
+*/
+
+router.get("/newsletter/all", async (req, res) => {
+  const newsletter = await Newsletter.find();
+  if (!newsletter) {
+    return res.json({
+      success: false,
+      message: "Internal Server Error!",
+    });
+  }
+  return res.json({
+    success: true,
+    newsletter,
+    message: "Emails Found!",
+  });
+});
+
+/*
+Method  : GET
+Route   : /connect/newsletter/:id
+Func    : Fetch Newsletter Data
+Access  : Private
+*/
+
+router.get("/newsletter/:id", async (req, res) => {
+  const id = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.json({
+      success: false,
+      message: "Invalid Blog ID!",
+    });
+  }
+
+  const newsletter = await Newsletter.findByIdAndDelete(id);
+
+  if (!newsletter) {
+    return res.json({
+      success: false,
+      message: "No Newsletter Found!",
+    });
+  }
+  return res.json({
+    success: true,
+    message: "Newsletter Deleted",
+  });
+});
 
 /*
 Method  : POST
@@ -101,8 +152,9 @@ router.post("/form/submit", async (req, res) => {
 
       return res.json({
         success: true,
-        message: 'Contact Request Registered! Site Admin will reach you within 48 business hours!'
-      })
+        message:
+          "Contact Request Registered! Site Admin will reach you within 48 business hours!",
+      });
     }
   } else {
     return res.json({
