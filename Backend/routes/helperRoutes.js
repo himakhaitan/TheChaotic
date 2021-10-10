@@ -69,6 +69,33 @@ router.post("/author/create", upload.single("profileImg"), async (req, res) => {
   });
 });
 
+/*
+Method  : GET
+Route   : /assist/author/all
+Access  : Public
+*/
+router.get("/author/all", async (req, res) => {
+  const authors = await Author.find({});
+
+  if (!authors) {
+    return res.json({
+      success: false,
+      message: "No Authors Found!",
+    });
+  }
+
+  return res.json({
+    success: true,
+    message: "Authors Found!",
+    authors: authors.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+      };
+    }),
+  });
+});
+
 // Category Routes
 
 /*
@@ -126,8 +153,6 @@ router.post("/category/create", async (req, res) => {
     category: savedCategory,
   });
 });
-
-// Category Routes
 
 /*
 Method  : GET

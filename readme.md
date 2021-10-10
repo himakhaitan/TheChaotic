@@ -93,6 +93,18 @@ Below are some of the screenshots from The Chaotic
 
 <img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot3.png">
 
+### Login Page
+
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot7.png">
+
+### Dashboard
+
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot8.png">
+
+### 404 Page
+
+<img src="https://github.com/himakhaitan/TheChaotic/blob/main/images/screenshot6.png">
+
 ## Installation and Setup
 
 ## License

@@ -14,7 +14,8 @@
   font-weight: 600;
   text-transform: uppercase;
 }
-.simpleInput {
+.simpleInput,
+.selectInput {
   padding: 0.8rem 1.5rem;
   width: 100%;
   outline: none;
@@ -23,7 +24,6 @@
   color: var(--black);
   border: 1.5px solid var(--black);
 }
-
 .simpleInput::placeholder {
   color: rgb(136, 136, 136);
   font-size: 1.4rem;
@@ -34,7 +34,8 @@
   grid-template-columns: 1fr max-content;
 }
 .mainGrp > input,
-.mainGrp > textarea {
+.mainGrp > textarea,
+.mainGrp > select {
   grid-column: 1/-1;
   grid-row: 1/2;
 }
