@@ -13,6 +13,16 @@ import { essentialAction } from "../../../store/slice/essential";
 
 const BlogCreate = () => {
   const dispatch = useDispatch();
+  const [overlay, setOverlay] = useState({
+    on: false,
+    message: null,
+  });
+  const overlayClose = () => {
+    setOverlay({
+      on: false,
+      message: null,
+    });
+  };
   const [preData, setPreData] = useState({ authors: [], categories: [] });
   useEffect(() => {
     dispatch(essentialAction.toggleSpinner());
@@ -81,6 +91,9 @@ const BlogCreate = () => {
   const tagsChangeHandler = (e) => {
     setTags(e.target.value);
   };
+  const [author, setAuthor] = useState();
+  const [category, setCategory] = useState();
+
   const resetInput = () => {
     setTitle("");
     setFile({
@@ -94,8 +107,35 @@ const BlogCreate = () => {
       errorMessage: null,
     });
     setTags("");
+    setAuthor(null);
+    setCategory(null);
   };
-  const submitHandler = (e) => {};
+  const submitHandler = async (e) => {
+    console.log(author, category);
+    e.preventDefault();
+    dispatch(essentialAction.toggleSpinner());
+    var formData = new FormData();
+    formData.append("BlogImage", file.file);
+    formData.append("title", title);
+    formData.append("content", content.content);
+    formData.append("tags", tags);
+    formData.append("author", author);
+    formData.append("category", category);
+    const response = await axios.post(
+      `${variable.serverURL}/blog/post/new`,
+      formData
+    );
+    if (response.data) {
+      setOverlay({
+        on: true,
+        message: response.data.message,
+      });
+      if (response.data.success) {
+        resetInput();
+      }
+    }
+    dispatch(essentialAction.toggleSpinner());
+  };
   return (
     <div className={classes.main}>
       <SimpleInput
@@ -124,9 +164,23 @@ const BlogCreate = () => {
         onChange={contentChangeHandler}
         placeholder="Blog Content"
       />
-     
-      <Dropdown data={preData.authors} id="authors" label="Author" />
-      <Dropdown data={preData.categories} id="categories" label="Category" />
+
+      <Dropdown
+        data={preData.authors}
+        id="authors"
+        label="Author"
+        value={author}
+        onChange={setAuthor}
+        placeholder="Select Author"
+      />
+      <Dropdown
+        value={category}
+        onChange={setCategory}
+        data={preData.categories}
+        id="categories"
+        label="Category"
+        placeholder="Select Category"
+      />
       <SimpleInput
         value={tags}
         onChange={tagsChangeHandler}
@@ -135,6 +189,9 @@ const BlogCreate = () => {
         id="tags"
       />
       <Submit onClick={submitHandler} text="Submit" disabled={false} />
+      {overlay.on && (
+        <Overlay onClick={overlayClose} message={overlay.message} />
+      )}
     </div>
   );
 };
