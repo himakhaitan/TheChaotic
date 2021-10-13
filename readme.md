@@ -64,10 +64,10 @@ The Chaotic is a Blog Website with Frontend made of ReactJS and a Monolithic Bac
 - Newsletters
 - Contact Page
 - 404 Page
+- Admin Panel
 
 ### Features I Plan to Add
 
-- [ ] Admin Panel
 - [ ] Google OAuth Login For the Admin
 - [ ] Archives
 - [ ] Small Screen Devices Compatibility
