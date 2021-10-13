@@ -168,7 +168,10 @@ const AuthorCreate = () => {
     formData.append("profileImg", file.file);
     formData.append("name", name);
     formData.append("desc", description.description);
-    formData.append("socials", socials);
+    formData.append("instagram", socials.instagram);
+    formData.append("linkedin", socials.linkedin);
+    formData.append("facebook", socials.facebook);
+    formData.append("github", socials.github);
     axios
       .post(`${variable.serverURL}/assist/author/create`, formData)
       .then(async (response) => {

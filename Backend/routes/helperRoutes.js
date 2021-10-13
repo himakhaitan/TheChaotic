@@ -1,3 +1,4 @@
+const { json } = require("express");
 const express = require("express");
 const fs = require("fs");
 const router = express.Router();
@@ -24,7 +25,6 @@ router.post("/author/create", upload.single("profileImg"), async (req, res) => {
       errors,
     });
   }
-
   const data = {
     name: req.body.name,
     desc: req.body.desc,
@@ -32,18 +32,13 @@ router.post("/author/create", upload.single("profileImg"), async (req, res) => {
       contentType: req.file.mimetype,
     },
   };
-  if (req.body.socials.instagram)
-    data.socials.instagram = req.body.socials.instagram;
-  if (req.body.socials.facebook)
-    data.socials.facebook = req.body.socials.facebook;
-  if (req.body.socials.github) data.socials.github = req.body.socials.github;
-  if (req.body.socials.linkedin)
-    data.socials.linkedin = req.body.socials.linkedin;
-
+  data.socials = {};
+  if (req.body.instagram) data.socials.instagram = req.body.instagram;
+  if (req.body.facebook) data.socials.facebook = req.body.facebook;
+  if (req.body.github) data.socials.github = req.body.github;
+  if (req.body.linkedin) data.socials.linkedin = req.body.linkedin;
   data.profilePhoto.data = fs.readFileSync("uploads\\" + req.file.filename);
-
   const newAuthor = await new Author(data);
-
   if (!newAuthor) {
     fs.unlinkSync("uploads\\" + req.file.filename);
     return res.json({
@@ -51,9 +46,7 @@ router.post("/author/create", upload.single("profileImg"), async (req, res) => {
       message: "Internal Server Error!",
     });
   }
-
   const savedAuthor = await newAuthor.save();
-
   if (!savedAuthor) {
     fs.unlinkSync("uploads\\" + req.file.filename);
     return res.json({

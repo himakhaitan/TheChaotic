@@ -6,25 +6,28 @@ const authorValidation = (data) => {
 
   data.name = !isEmpty(data.name) ? data.name : "";
   data.desc = !isEmpty(data.desc) ? data.desc : "";
-  data.socials = !isEmpty(data.socials) ? data.socials : {};
+  data.instagram = !isEmpty(data.instagram) ? data.instagram : {};
+  data.facebook = !isEmpty(data.facebook) ? data.facebook : {};
+  data.github = !isEmpty(data.github) ? data.github : {};
+  data.linkedin = !isEmpty(data.linkedin) ? data.linkedin : {};
 
-  if (!isEmpty(data.socials.instagram)) {
-    if (!validator.isURL(data.socials.instagram)) {
+  if (!isEmpty(data.instagram)) {
+    if (!validator.isURL(data.instagram)) {
       errors.instagram = "Not a Valid URL!";
     }
   }
-  if (!isEmpty(data.socials.facebook)) {
-    if (!validator.isURL(data.socials.facebook)) {
+  if (!isEmpty(data.facebook)) {
+    if (!validator.isURL(data.facebook)) {
       errors.facebook = "Not a Valid URL!";
     }
   }
-  if (!isEmpty(data.socials.linkedin)) {
-    if (!validator.isURL(data.socials.linkedin)) {
+  if (!isEmpty(data.linkedin)) {
+    if (!validator.isURL(data.linkedin)) {
       errors.linkedin = "Not a Valid URL!";
     }
   }
-  if (!isEmpty(data.socials.github)) {
-    if (!validator.isURL(data.socials.github)) {
+  if (!isEmpty(data.github)) {
+    if (!validator.isURL(data.github)) {
       errors.github = "Not a Valid URL!";
     }
   }

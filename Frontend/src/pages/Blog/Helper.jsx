@@ -117,8 +117,34 @@ const Helper = (props) => {
             </div>
           </div>
           <div className={classes.authorSocial}>
-            <FaFacebookF /> <FaGithub /> <FaInstagram />
-            <FaLinkedinIn />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={data.author.socials.facebook || null}
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={data.author.socials.github || null}
+            >
+              <FaGithub />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={data.author.socials.instagram || null}
+            >
+              <FaInstagram />
+            </a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={data.author.socials.linkedin || null}
+            >
+              <FaLinkedinIn />
+            </a>
           </div>
         </div>
       </div>
