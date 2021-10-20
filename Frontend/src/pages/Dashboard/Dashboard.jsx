@@ -7,6 +7,9 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { BiNews } from "react-icons/bi";
 import { TiContacts } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { essentialAction } from "../../store/slice/essential";
+import { AuthActions } from "../../store/slice/auth";
 
 import { Route, Switch, Link, useRouteMatch } from "react-router-dom";
 import Spinner from "../../components/UI/Spinner/Spinner";
@@ -52,7 +55,12 @@ const controller = [
 ];
 
 const Dashboard = (props) => {
-  const logoutHandler = () => {};
+  const dispatch = useDispatch();
+  const logoutHandler = (e) => {
+    dispatch(essentialAction.toggleSpinner());
+    dispatch(AuthActions.logout());
+    dispatch(essentialAction.toggleSpinner());
+  };
   const { url } = useRouteMatch();
   return (
     <TwoColUI className={classes.main}>
@@ -69,7 +77,7 @@ const Dashboard = (props) => {
             </div>
           );
         })}
-        <div className={classes.controlGrp}>
+        <div onClick={logoutHandler} className={classes.controlGrp}>
           <div className={classes.icon} onClick={logoutHandler}>
             <RiLogoutCircleRLine />
           </div>

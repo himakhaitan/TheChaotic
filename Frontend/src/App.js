@@ -10,6 +10,9 @@ import { updateCategories } from "./store/slice/essential";
 import { fetchSortedBlogs } from "./store/slice/blog";
 import PrivateRoute from "./routing/PrivateRoute";
 import PublicRoute from "./routing/PublicRoute";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { AuthActions } from "./store/slice/auth";
 
 // Pages
 import Home from "./pages/Home/Home";
@@ -30,6 +33,25 @@ const page404 = React.lazy(() => import("./pages/404/404"));
 function App() {
   const dispatch = useDispatch();
 
+  if (localStorage.jwtToken) {
+    // SET Auth Token
+    axios.defaults.headers.common["Authorization"] = localStorage.jwtToken;
+    dispatch(
+      AuthActions.login({
+        token: localStorage.jwtToken,
+      })
+    );
+    const decoded = jwt_decode(localStorage.jwtToken);
+    // Check for Expire Token
+    const currentTime = Date.now() / 1000;
+    if (decoded.exp <= currentTime) {
+      // Logout User
+      dispatch(AuthActions.logout());
+      // Redirect to Login
+      window.location.href = "/admin/login";
+    }
+  }
+
   useEffect(() => {
     dispatch(fetchSortedBlogs("likes", 3));
     dispatch(fetchSortedBlogs("published", 10));
@@ -40,7 +62,7 @@ function App() {
   return (
     <div className="home">
       <Navigation />
-      <Suspense fallback={<Spinner/>}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path="/" component={Home} exact />
           {/* <Route path="/technology" component={CategoryA} exact /> */}

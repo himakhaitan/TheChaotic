@@ -1,15 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import variable from "../../config/variables";
 
-let initialState = {};
+let initialState = {
+  token: "",
+  isLoggedIn: false,
+};
 
 const AuthSlice = createSlice({
   name: "Auth",
   initialState,
   reducers: {
-    login(state, action) {},
-    logout(state, action) {},
+    login(state, action) {
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+      axios.defaults.headers.common["Authorization"] = action.payload.token;
+      localStorage.setItem("jwtToken", action.payload.token);
+    },
+    logout(state, action) {
+      delete axios.defaults.headers.common["Authorization"];
+      state.isLoggedIn = false;
+      localStorage.removeItem("jwtToken");
+    },
   },
 });
 

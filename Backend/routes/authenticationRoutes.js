@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
           return res.json({
             success: true,
             message: "Logged In!",
-            token,
+            token: `Bearer ${token}`,
           });
         }
       }
