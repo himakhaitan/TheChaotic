@@ -30,15 +30,17 @@ app.use("/uploads", express.static("uploads"));
 // Passport Setup
 require("./config/passport");
 
-const authRoute = require("./routes/authRoutes");
+// const authRoute = require("./routes/authRoutes");
 const connectRoute = require("./routes/connectRouter");
 const blogRoute = require("./routes/blogRoutes");
 const helperRoute = require("./routes/helperRoutes");
+const authenticationRoute = require("./routes/authenticationRoutes");
 
-app.use("/auth/google", authRoute);
+// app.use("/auth/google", authRoute);
 app.use("/connect", connectRoute);
 app.use("/blog", blogRoute);
 app.use("/assist", helperRoute);
+app.use("/authentication", authenticationRoute);
 
 // GENERAL ROUTE
 

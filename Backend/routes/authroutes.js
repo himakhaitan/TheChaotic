@@ -11,8 +11,12 @@ router.get(
   "/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
+    res.json({
+      success: true,
+      token: "jdnkjdbkdc bldfnmjdofnje f",
+      user: req.user,
+    });
   }
 );
+
 module.exports = router;

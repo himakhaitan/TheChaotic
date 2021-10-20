@@ -117,5 +117,6 @@
   font-size: 1.4rem;
   font-weight: 500;
   color: var(--white);
+  user-select: none;
   padding: 0 1rem;
 }

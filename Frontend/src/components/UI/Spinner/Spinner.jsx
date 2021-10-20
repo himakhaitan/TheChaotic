@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import classes from "./Spinner.module.css";
+import classes from "./Spinner.module.css"
 
 function Spin() {
   return (

@@ -3,6 +3,7 @@ import TwoColUI from "../../components/UI/Structure/TwoColUI";
 import { FcGoogle } from "react-icons/fc";
 import { FaUserCircle, FaUnlockAlt, FaGithub } from "react-icons/fa";
 import myImg from "../../assets/imgs.jpg";
+
 const Admin = () => {
   return (
     <TwoColUI className={classes.main}>
