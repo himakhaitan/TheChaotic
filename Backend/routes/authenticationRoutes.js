@@ -4,15 +4,12 @@ const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
-router.get(
-  "/hello",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.json({
-      success: true,
-    });
-  }
-);
+/*
+Method  : POST
+Route   : /authentication/login
+Func    : LOGIN
+Access  : Public
+*/
 
 router.post("/login", (req, res) => {
   let { email, password } = req.body;

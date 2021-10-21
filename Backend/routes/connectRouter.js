@@ -5,6 +5,7 @@ const newsletterValidator = require("../validation/newsletterValidator");
 const contactValidator = require("../validation/contactValidator");
 const Newsletter = require("../models/Newsletter");
 const Contact = require("../models/Contact");
+const passport = require("passport");
 
 /*
 Method  : POST
@@ -63,20 +64,24 @@ Func    : Fetch Newsletter Data
 Access  : Private
 */
 
-router.get("/newsletter/all", async (req, res) => {
-  const newsletter = await Newsletter.find();
-  if (!newsletter) {
+router.get(
+  "/newsletter/all",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const newsletter = await Newsletter.find();
+    if (!newsletter) {
+      return res.json({
+        success: false,
+        message: "Internal Server Error!",
+      });
+    }
     return res.json({
-      success: false,
-      message: "Internal Server Error!",
+      success: true,
+      newsletter,
+      message: "Emails Found!",
     });
   }
-  return res.json({
-    success: true,
-    newsletter,
-    message: "Emails Found!",
-  });
-});
+);
 
 /*
 Method  : GET
@@ -85,28 +90,32 @@ Func    : Fetch Newsletter Data by Id
 Access  : Private
 */
 
-router.get("/newsletter/:id", async (req, res) => {
-  const id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+router.get(
+  "/newsletter/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.json({
+        success: false,
+        message: "Invalid ID!",
+      });
+    }
+
+    const newsletter = await Newsletter.findByIdAndDelete(id);
+
+    if (!newsletter) {
+      return res.json({
+        success: false,
+        message: "No Newsletter Found!",
+      });
+    }
     return res.json({
-      success: false,
-      message: "Invalid ID!",
+      success: true,
+      message: "Newsletter Deleted",
     });
   }
-
-  const newsletter = await Newsletter.findByIdAndDelete(id);
-
-  if (!newsletter) {
-    return res.json({
-      success: false,
-      message: "No Newsletter Found!",
-    });
-  }
-  return res.json({
-    success: true,
-    message: "Newsletter Deleted",
-  });
-});
+);
 
 /*
 Method  : POST
@@ -171,20 +180,24 @@ Func    : Fetch Contact Response Data
 Access  : Private
 */
 
-router.get("/form/all", async (req, res) => {
-  const contact = await Contact.find();
-  if (!contact) {
+router.get(
+  "/form/all",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const contact = await Contact.find();
+    if (!contact) {
+      return res.json({
+        success: false,
+        message: "Internal Server Error!",
+      });
+    }
     return res.json({
-      success: false,
-      message: "Internal Server Error!",
+      success: true,
+      contact,
+      message: "Responses Found!",
     });
   }
-  return res.json({
-    success: true,
-    contact,
-    message: "Responses Found!",
-  });
-});
+);
 
 /*
 Method  : GET
@@ -193,27 +206,31 @@ Func    : Fetch Contact Repsonse by ID
 Access  : Private
 */
 
-router.get("/form/:id", async (req, res) => {
-  const id = req.params.id;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+router.get(
+  "/form/:id",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.json({
+        success: false,
+        message: "Invalid ID!",
+      });
+    }
+
+    const contact = await Contact.findByIdAndDelete(id);
+
+    if (!contact) {
+      return res.json({
+        success: false,
+        message: "No Contact Response Found!",
+      });
+    }
     return res.json({
-      success: false,
-      message: "Invalid ID!",
+      success: true,
+      message: "Contact Deleted",
     });
   }
-
-  const contact = await Contact.findByIdAndDelete(id);
-
-  if (!contact) {
-    return res.json({
-      success: false,
-      message: "No Contact Response Found!",
-    });
-  }
-  return res.json({
-    success: true,
-    message: "Contact Deleted",
-  });
-});
+);
 
 module.exports = router;

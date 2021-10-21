@@ -1,5 +1,6 @@
 const upload = require("../middlewares/upload");
 const fs = require("fs");
+const passport = require("passport");
 const router = require("express").Router();
 const blogValidator = require("../validation/blogValidator");
 const mongoose = require("mongoose");
@@ -11,7 +12,6 @@ const superheros = require("superheroes");
 const Blog = require("../models/Blog");
 const Author = require("../models/Author");
 const Category = require("../models/Category");
-const { json } = require("body-parser");
 
 /*
 Method  : POST
@@ -68,88 +68,93 @@ Route   : /blog/post/new
 Access  : Private
 Func    : Create New Blog
 */
-router.post("/post/new", upload.single("BlogImage"), async (req, res) => {
-  // Checking Data Validity
-  const { errors, isValid } = blogValidator(req.body);
+router.post(
+  "/post/new",
+  passport.authenticate("jwt", { session: false }),
+  upload.single("BlogImage"),
+  async (req, res) => {
+    // Checking Data Validity
+    const { errors, isValid } = blogValidator(req.body);
 
-  //   Sending Response if the Data is InValid
-  if (!isValid) {
+    //   Sending Response if the Data is InValid
+    if (!isValid) {
+      fs.unlinkSync("uploads\\" + req.file.filename);
+      return res.json({
+        success: false,
+        errors,
+      });
+    }
+    // Finding Author
+    const author = Author.findById(req.body.author);
+
+    if (!author) {
+      errors.author = "Author Not Find!";
+      fs.unlinkSync("uploads\\" + req.file.filename);
+      return res.json({
+        success: false,
+        errors,
+      });
+    }
+
+    // Finding Category
+
+    const category = Category.findById(req.body.category);
+
+    if (!category) {
+      errors.category = "Category not Found!";
+      fs.unlinkSync("uploads\\" + req.file.filename);
+      return res.json({
+        success: false,
+        errors,
+      });
+    }
+
+    // Processing Tags
+    const tags = req.body.tags.split(",").map((item) => {
+      return item.trim().toLowerCase();
+    });
+
+    //   Crating Final Data
+    const submitData = {
+      title: req.body.title,
+      content: req.body.content,
+      image: {
+        data: fs.readFileSync("uploads\\" + req.file.filename),
+        contentType: req.file.mimetype,
+      },
+      author: mongoose.Types.ObjectId(req.body.author),
+      likes: 0,
+      category: mongoose.Types.ObjectId(req.body.category),
+      tags,
+    };
+    const newBlog = await new Blog(submitData);
+
+    if (!newBlog) {
+      fs.unlinkSync("uploads\\" + req.file.filename);
+      return res.json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+
+    const savedBlog = await newBlog.save();
+
+    if (!savedBlog) {
+      fs.unlinkSync("uploads\\" + req.file.filename);
+      return res.json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
     fs.unlinkSync("uploads\\" + req.file.filename);
+
     return res.json({
-      success: false,
-      errors,
+      success: true,
+      blog: savedBlog,
+      message: "Blog Created",
     });
   }
-  // Finding Author
-  const author = Author.findById(req.body.author);
-
-  if (!author) {
-    errors.author = "Author Not Find!";
-    fs.unlinkSync("uploads\\" + req.file.filename);
-    return res.json({
-      success: false,
-      errors,
-    });
-  }
-
-  // Finding Category
-
-  const category = Category.findById(req.body.category);
-
-  if (!category) {
-    errors.category = "Category not Found!";
-    fs.unlinkSync("uploads\\" + req.file.filename);
-    return res.json({
-      success: false,
-      errors,
-    });
-  }
-
-  // Processing Tags
-  const tags = req.body.tags.split(",").map((item) => {
-    return item.trim().toLowerCase();
-  });
-
-  //   Crating Final Data
-  const submitData = {
-    title: req.body.title,
-    content: req.body.content,
-    image: {
-      data: fs.readFileSync("uploads\\" + req.file.filename),
-      contentType: req.file.mimetype,
-    },
-    author: mongoose.Types.ObjectId(req.body.author),
-    likes: 0,
-    category: mongoose.Types.ObjectId(req.body.category),
-    tags,
-  };
-  const newBlog = await new Blog(submitData);
-
-  if (!newBlog) {
-    fs.unlinkSync("uploads\\" + req.file.filename);
-    return res.json({
-      success: false,
-      message: "Internal Server Error",
-    });
-  }
-
-  const savedBlog = await newBlog.save();
-
-  if (!savedBlog) {
-    fs.unlinkSync("uploads\\" + req.file.filename);
-    return res.json({
-      success: false,
-      message: "Internal Server Error",
-    });
-  }
-  fs.unlinkSync("uploads\\" + req.file.filename);
-
-  return res.json({
-    success: true,
-    blog: savedBlog,
-    message: "Blog Created",
-  });
-});
+);
 
 /*
 Method  : GET
@@ -408,11 +413,11 @@ router.get("/:year/:month/all", async (req, res) => {
       $lte: new Date(+year, +month, 0),
     },
   });
-  if(!blogs || blogs.length == 0) {
+  if (!blogs || blogs.length == 0) {
     return res.json({
       success: false,
-      message: "No blogs Found!"
-    })
+      message: "No blogs Found!",
+    });
   }
   res.json({
     success: true,
